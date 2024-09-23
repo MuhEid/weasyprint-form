@@ -28,15 +28,17 @@ def submit():
         print('Received values:', data)
         
         # Step 2: Insert values into the local HTML template
-        with open('./template.html', 'r') as file:
-            template = Template(file.read())
-
+        
+        try:
+            with open('./template.html', 'r') as file:
+                template = Template(file.read())
+        except Exception as e:
+            print(e)
         html_content = template.render(data)
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         output_pdf_file = os.path.join(output_dir, f'output_{data["orderId"]}_{timestamp}.pdf')
-        
-        HTML(string=html_content, base_url='.').write_pdf(output_pdf_file)
+        HTML(string=html_content, base_url='.', encoding='utf-8').write_pdf(output_pdf_file)
 
         # Step 4: Send the download URL for this PDF file back to the user
         download_url = f"/pdfs/output.pdf"
