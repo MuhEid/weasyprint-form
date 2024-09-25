@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
+        <title>Gerätereparaturformular</title>
+        <style>
+            @font-face {
+                font-family: "DejaVu Sans";
+                src: url("fonts/dejavu-sans.book.ttf") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+            }
+            body {
+                font-family: "DejaVu Sans", sans-serif;
+                margin: auto;
+                max-width: 80%;
+            }
+            /* Additional styles if needed */
+        </style>
+        <!-- <link rel="stylesheet" type="text/css" href="./styles.css" /> -->
+    </head>
+    <body>
+        <!-- Header Section -->
+        <div
+            style="display: flex; flex-direction: row; align-items: center; margin-bottom: 1.25rem"
+        >
+            <!-- Logo Component (Placeholder for your logo) -->
+            <div style="width: 41.666667%; padding: 1.25rem">
+                <!-- Insert your logo image here -->
+                <img src="images\logo.png" alt="Logo" style="max-width: 100%" />
+            </div>
+            <!-- Title -->
+            <div style="text-align: center; width: 58.333333%; font-weight: bold; margin: 1rem 0">
+                <h1 style="font-size: 2.25rem">Reparaturauftrag</h1>
+                <h2 style="font-size: 1.5rem; color: #db1f2a">
+                    <span style="margin-right: 0.5rem">Bestellnummer:</span>{{orderId}}
+                </h2>
+            </div>
+        </div>
+
+        <!-- Second Section -->
+        <div style="display: flex; flex-direction: column; width: 100%; margin-bottom: 1.5rem">
+            <table style="width: 100%; margin-bottom: 1.5rem">
+                <tr>
+                    <!-- Vorname -->
+                    <td style="width: 50%; padding-right: 1rem">
+                        <div style="font-weight: 500; margin-bottom: 0.5rem">Table Vorname</div>
+                        <div
+                            style="
+                                background-color: #f9fafb;
+                                color: #111827;
+                                font-size: 0.875rem;
+                                border-radius: 0.5rem;
+                                border: 1px solid #d1d5db;
+                                padding: 0.625rem;
+                            "
+                        >
+                            {{ firstName }}
+                        </div>
+                    </td>
+
+                    <!-- Nachname -->
+                    <td style="width: 50%">
+                        <div style="font-weight: 500; margin-bottom: 0.5rem">Table Nachname</div>
+                        <div
+                            style="
+                                background-color: #f9fafb;
+                                color: #111827;
+                                font-size: 0.875rem;
+                                border-radius: 0.5rem;
+                                border: 1px solid #d1d5db;
+                                padding: 0.625rem;
+                            "
+                        >
+                            {{ lastName }}
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <!-- Straße -->
+                    <td style="width: 50%; padding-right: 1rem">
+                        <div style="font-weight: 500; margin-bottom: 0.5rem">Straße</div>
+                        <div
+                            style="
+                                background-color: #f9fafb;
+                                color: #111827;
+                                font-size: 0.875rem;
+                                border-radius: 0.5rem;
+                                border: 1px solid #d1d5db;
+                                padding: 0.625rem;
+                            "
+                        >
+                            {{ street }}
+                        </div>
+                    </td>
+
+                    <!-- Hausnummer -->
+                    <td style="width: 50%">
+                        <div style="font-weight: 500; margin-bottom: 0.5rem">Hausnummer</div>
+                        <div
+                            style="
+                                background-color: #f9fafb;
+                                color: #111827;
+                                font-size: 0.875rem;
+                                border-radius: 0.5rem;
+                                border: 1px solid #d1d5db;
+                                padding: 0.625rem;
+                            "
+                        >
+                            {{ houseNumber }}
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Continue similar structure for other rows -->
+            </table>
+            <div style="width: 100%">
+                <!-- First Row of Input Fields -->
+                <div style="display: flex; margin-bottom: 0.75rem">
+                    <!-- Vorname Input Field -->
+                    <div style="width: 50%; margin-right: 1rem">
+                        <div
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Vorname
+                        </div>
+                        <div
+                            style="
+                                background-color: #f9fafb;
+                                color: #111827;
+                                font-size: 0.875rem;
+                                border-radius: 0.5rem;
+                                border: 1px solid #d1d5db; /* Ensure the border matches */
+                                display: block;
+                                width: 100%;
+                                padding: 0.625rem;
+                            "
+                        >
+                            {{ firstName }}
+                        </div>
+                    </div>
+
+                    <!-- Nachname Input Field -->
+                    <div style="width: 50%">
+                        <div
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Nachname
+                        </div>
+                        <div
+                            style="
+                                background-color: #f9fafb;
+                                color: #111827;
+                                font-size: 0.875rem;
+                                border-radius: 0.5rem;
+                                border: 1px solid #d1d5db; /* Ensure the border matches */
+                                display: block;
+                                width: 100%;
+                                padding: 0.625rem;
+                            "
+                        >
+                            {{lastName}}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Row of Input Fields -->
+                <div style="display: flex; margin-bottom: 0.75rem">
+                    <!-- Vorname Input Field -->
+                    <div style="width: 50%; margin-right: 1rem">
+                        <div
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Straße
+                        </div>
+                        <div
+                            style="
+                                background-color: #f9fafb;
+                                color: #111827;
+                                font-size: 0.875rem;
+                                border-radius: 0.5rem;
+                                border: 1px solid #d1d5db; /* Ensure the border matches */
+                                display: block;
+                                width: 100%;
+                                padding: 0.625rem;
+                            "
+                        >
+                            {{ street }}
+                        </div>
+                    </div>
+
+                    <!-- Nachname Input Field -->
+                    <div style="width: 50%">
+                        <div
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Hausnummer
+                        </div>
+                        <div
+                            style="
+                                background-color: #f9fafb;
+                                color: #111827;
+                                font-size: 0.875rem;
+                                border-radius: 0.5rem;
+                                border: 1px solid #d1d5db; /* Ensure the border matches */
+                                display: block;
+                                width: 100%;
+                                padding: 0.625rem;
+                            "
+                        >
+                            {{houseNumber}}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third Row of Input Fields -->
+                <div style="display: flex; margin-bottom: 0.75rem">
+                    <!-- PLZ Input Field -->
+                    <div style="width: 50%; margin-right: 1rem">
+                        <label
+                            for="postCode"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            PLZ
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="text"
+                                name="postCode"
+                                id="postCode"
+                                placeholder="89073"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                    <!-- Ort Input Field -->
+                    <div style="width: 50%">
+                        <label
+                            for="city"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Ort
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="text"
+                                name="city"
+                                id="city"
+                                placeholder="Ulm"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fourth Row of Input Fields -->
+                <div style="display: flex; margin-bottom: 0.75rem">
+                    <!-- IMEI/SN Input Field -->
+                    <div style="width: 50%; margin-right: 1rem">
+                        <label
+                            for="landline"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            IMEI/SN
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="text"
+                                name="landline"
+                                id="landline"
+                                placeholder="123456"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                    <!-- Mobil Input Field -->
+                    <div style="width: 50%">
+                        <label
+                            for="phone"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Mobil
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="phone"
+                                name="phone"
+                                id="phone"
+                                placeholder="+49 (1XX) XXXXXXXX"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fifth Row of Input Fields -->
+                <div style="display: flex; margin-bottom: 0.75rem">
+                    <!-- Gerät Input Field -->
+                    <div style="width: 50%; margin-right: 1rem">
+                        <label
+                            for="device"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Gerät
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="text"
+                                name="device"
+                                id="device"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                    <!-- Email Address Input Field -->
+                    <div style="width: 50%">
+                        <label
+                            for="email"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Email address
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="john.doe@gmail.com"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Input Fields -->
+            <div
+                style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 0.75rem;
+                "
+            >
+                <div style="display: grid; width: 100%">
+                    <!-- Farbe Input Field -->
+                    <div style="margin-bottom: 0.75rem">
+                        <label
+                            for="color"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Farbe
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="text"
+                                name="color"
+                                id="color"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                    <!-- PIN der SIM Karte Input Field -->
+                    <div style="margin-bottom: 0.75rem">
+                        <label
+                            for="simPin"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            PIN der SIM Karte
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="text"
+                                name="simPin"
+                                id="simPin"
+                                placeholder="123456"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                    <!-- Geräte Entsperrcode Input Field -->
+                    <div style="margin-bottom: 0.75rem">
+                        <label
+                            for="deviceUnlockCode"
+                            style="
+                                display: block;
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                color: #111827;
+                            "
+                        >
+                            Geräte Entsperrcode
+                        </label>
+                        <div style="position: relative">
+                            <input
+                                readonly
+                                type="text"
+                                name="deviceUnlockCode"
+                                id="deviceUnlockCode"
+                                style="
+                                    background-color: #f9fafb;
+                                    border: 1px solid #d1d5db;
+                                    color: #111827;
+                                    font-size: 0.875rem;
+                                    border-radius: 0.5rem;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.625rem;
+                                "
+                            />
+                        </div>
+                    </div>
+                </div>
+                <!-- PatternLock Component (Placeholder) -->
+                <!-- You can insert your PatternLock component here if needed -->
+                <div style="margin: 1.25rem 0; border: 1px black solid"></div>
+                <img
+                    src="images\pattern.png"
+                    alt="patter lock"
+                    style="max-width: 100%; width: 350px"
+                />
+            </div>
+
+            <!-- RepairsToBeMade Component -->
+            <div style="margin-top: 1.75rem">
+                <p style="font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 600">
+                    Repariert wird:
+                </p>
+                <div
+                    style="
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        grid-gap: 1rem;
+                        margin-top: 0.5rem;
+                        text-transform: capitalize;
+                    "
+                >
+                    <!-- Loop through repairListOne -->
+                    {% for item in repairs.repairListOne %}
+                    <label style="display: flex; align-items: center">
+                        <input
+                            type="checkbox"
+                            name="repairListOne"
+                            value="{{ item }}"
+                            checked
+                            disabled
+                            style="margin-right: 0.5rem"
+                        />
+                        {{ item }}
+                    </label>
+                    {% endfor %}
+
+                    <!-- Loop through repairListTwo -->
+                    {% for item in repairs.repairListTwo %}
+                    <label style="display: flex; align-items: center">
+                        <input
+                            type="checkbox"
+                            name="repairListTwo"
+                            value="{{ item }}"
+                            checked
+                            disabled
+                            style="margin-right: 0.5rem"
+                        />
+                        {{ item }}
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Section -->
+        <div style="margin-top: 1.25rem">
+            <div style="margin: 1rem 0; display: flex; flex-direction: column">
+                <div style="width: 100%">
+                    <p style="font-weight: 600">Mängel am Gerät vor der Reparatur:</p>
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: 1fr;
+                            gap: 1rem;
+                            margin-top: 0.5rem;
+                        "
+                    >
+                        <label style="display: flex; align-items: center">
+                            <input
+                                type="checkbox"
+                                name="üblicheGebrauchsspuren"
+                                style="margin-right: 0.5rem"
+                            />
+                            Übliche Gebrauchsspuren
+                        </label>
+                        <label style="display: flex; align-items: center">
+                            <input
+                                type="checkbox"
+                                name="deutlicheGebrauchsspuren"
+                                style="margin-right: 0.5rem"
+                            />
+                            Deutliche Gebrauchsspuren
+                        </label>
+                        <label style="display: flex; align-items: center">
+                            <input
+                                type="checkbox"
+                                name="rahmenVerbogen"
+                                style="margin-right: 0.5rem"
+                            />
+                            Rahmen verbogen
+                        </label>
+                        <label style="display: flex; align-items: center">
+                            <input
+                                type="checkbox"
+                                name="simEntfernt"
+                                style="margin-right: 0.5rem"
+                            />
+                            SIM &amp; SD Karte entfernt
+                        </label>
+                        <label style="display: flex; align-items: center">
+                            <input
+                                type="checkbox"
+                                name="antenneEntfernt"
+                                style="margin-right: 0.5rem"
+                            />
+                            Hülle entfernt
+                        </label>
+                    </div>
+                </div>
+
+                <!-- DeviceMockup Component (Placeholder) -->
+                <!-- Insert your device mockup image here -->
+                <div style="margin: 1.25rem 0">
+                    <img src="images\device.png" alt="Device Mockup" style="max-width: 100%" />
+                </div>
+            </div>
+
+            <!-- Additional Information Section -->
+            <div style="margin-top: 1.25rem">
+                <!-- Total Price and Accessories -->
+                <div>
+                    <!-- DropdownMenu Component (Placeholder for accessories selection) -->
+                    <!-- Insert your accessories dropdown here -->
+                    <div style="margin-bottom: 0.75rem">
+                        <!-- Accessories Dropdown -->
+                        <select
+                            name="accessories"
+                            style="width: 100%; padding: 0.625rem; border-radius: 0.5rem"
+                        >
+                            <option value="">Select Accessories</option>
+                            <!-- Add options as needed -->
+                        </select>
+                    </div>
+
+                    <!-- Total Price Display -->
+                    <div style="display: flex; justify-content: flex-end; color: #111827">
+                        <span style="font-size: 1.125rem; font-weight: 600">Total:</span>
+                        <span
+                            style="
+                                display: flex;
+                                align-items: center;
+                                font-size: 1.25rem;
+                                margin-left: 0.5rem;
+                            "
+                        >
+                            <!-- Replace 'totalPrice' with your actual total price variable -->
+                            {{ totalAccessoryPrice }} €
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Water Damage Section -->
+                <div style="margin: 1rem 0; display: grid">
+                    <div>
+                        <p style="font-size: 1.125rem; font-weight: 600">
+                            Hat das Gerät einen Wasserschaden?
+                        </p>
+                        {% if hasWaterDamage %}
+                        <p>Ja</p>
+                        {% else %}
+                        <p>Nein</p>
+                        {% endif %}
+                        <div
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                margin-top: 1rem;
+                            "
+                        >
+                            <!-- Water Damage Icon -->
+                            <img
+                                src="images\waterDamageIcon.jpg"
+                                alt="Water Damage"
+                                style="width: 250px; height: 250px"
+                            />
+                            <div style="margin-top: 1rem">
+                                <label style="display: flex; align-items: center; font-size: 1rem">
+                                    <input
+                                        type="checkbox"
+                                        style="margin-right: 0.5rem"
+                                        checked
+                                        disabled
+                                    />
+                                    Mir ist bewusst, dass ich bei Wasserschäden keine Garantie oder
+                                    Gewährleistung nach der Reparatur erhalte
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <div style="margin: 1rem 0; width: 100%">
+            <!-- Reparieren Sie mein Gerät bis Input Field -->
+            <div style="margin-bottom: 0.75rem">
+                <label
+                    for="repairMaxPrice"
+                    style="
+                        display: block;
+                        margin-bottom: 0.5rem;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        color: #111827;
+                    "
+                >
+                    Reparieren Sie mein Gerät bis:
+                </label>
+                <div style="position: relative">
+                    <input
+                        type="number"
+                        name="repairMaxPrice"
+                        id="repairMaxPrice"
+                        style="
+                            background-color: #f9fafb;
+                            border: 1px solid #d1d5db;
+                            color: #111827;
+                            font-size: 0.875rem;
+                            border-radius: 0.5rem;
+                            display: block;
+                            width: 100%;
+                            padding: 0.625rem;
+                            padding-right: 2.5rem;
+                        "
+                    />
+                    <!-- Euro Sign -->
+                    <span
+                        style="
+                            position: absolute;
+                            right: 0.75rem;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            color: #6b7280;
+                            pointer-events: none;
+                        "
+                    >
+                        €
+                    </span>
+                </div>
+            </div>
+
+            <!-- Anzahlung/Deposit Input Field -->
+            <div style="margin-bottom: 0.75rem">
+                <label
+                    for="deposit"
+                    style="
+                        display: block;
+                        margin-bottom: 0.5rem;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        color: #111827;
+                    "
+                >
+                    Anzahlung/Deposit:
+                </label>
+                <div style="position: relative">
+                    <input
+                        type="number"
+                        name="deposit"
+                        id="deposit"
+                        style="
+                            background-color: #f9fafb;
+                            border: 1px solid #d1d5db;
+                            color: #111827;
+                            font-size: 0.875rem;
+                            border-radius: 0.5rem;
+                            display: block;
+                            width: 100%;
+                            padding: 0.625rem;
+                            padding-right: 2.5rem;
+                        "
+                    />
+                    <!-- Euro Sign -->
+                    <span
+                        style="
+                            position: absolute;
+                            right: 0.75rem;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            color: #6b7280;
+                            pointer-events: none;
+                        "
+                    >
+                        €
+                    </span>
+                </div>
+            </div>
+
+            <!-- Gesamtpreis Input Field -->
+            <div style="margin-bottom: 0.75rem">
+                <div
+                    style="
+                        display: block;
+                        margin-bottom: 0.5rem;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        color: #111827;
+                    "
+                >
+                    Gesamtpreis:
+                </div>
+                <div
+                    style="
+                        position: relative;
+                        background-color: #f9fafb;
+                        color: #111827;
+                        font-size: 0.875rem;
+                        border-radius: 0.5rem;
+                        border: 1px solid #d1d5db; /* Ensure the border matches */
+                        display: block;
+                        width: 100%;
+                        padding: 0.625rem;
+                    "
+                >
+                    {{ totalPrice }}
+                    <span
+                        style="
+                            position: absolute;
+                            right: 0.75rem;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            color: #6b7280;
+                            pointer-events: none;
+                        "
+                    >
+                        €
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terms and Confirmation Section -->
+        <div style="margin: 1rem 0">
+            <!-- Terms Link -->
+
+            <!-- Confirmation Checkbox -->
+            <div style="margin-top: 1rem">
+                <label style="display: flex; align-items: center">
+                    <input type="checkbox" name="agreeWithTerms" style="margin-right: 0.5rem" />
+                    Hiermit bestätige ich, dass ich mit den oben genannten Bedingungen einverstanden
+                    bin und diese akzeptiere.
+                </label>
+            </div>
+        </div>
+    </body>
+</html>
