@@ -19,6 +19,7 @@
                 font-family: "DejaVu Sans", sans-serif;
                 margin: 0;
                 font-size: 12pt;
+                line-height: normal;
             }
             .checkbox {
                 display: inline-block;
@@ -39,6 +40,11 @@
                 background-color: #1f4696;
                 border-radius: 50%;
             }
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+
             /* Additional styles if needed */
         </style>
         <!-- <link rel="stylesheet" type="text/css" href="./styles.css" /> -->
@@ -47,7 +53,7 @@
         <!-- Header Section -->
 
         <!-- Second Section -->
-        <table style="width: 100%">
+        <table style="width: 100%; margin-bottom: 1.5em">
             <tr>
                 <!-- Logo Component -->
                 <td style="width: 50%">
@@ -55,31 +61,31 @@
                 </td>
                 <!-- Title -->
                 <td style="width: 50%; text-align: center; font-weight: bold">
-                    <h1 style="font-size: 1.5rem">Reparaturauftrag</h1>
-                    <h2 style="font-size: 1rem; color: #db1f2a">
-                        <span style="margin-right: 0.5rem">Bestellnummer:</span>{{ orderId }}
+                    <h1 style="font-size: 1.5em">Reparaturauftrag</h1>
+                    <h2 style="font-size: 1em; color: #db1f2a">
+                        <span style="margin-right: 0.5em">Bestellnummer:</span>{{ orderId }}
                     </h2>
                 </td>
             </tr>
         </table>
 
         <!-- Second Section -->
-        <table style="width: 100%; margin-bottom: 1.5rem">
+        <table style="width: 100%; margin-bottom: 1.5em">
             <!-- First Row -->
             <tr>
                 <!-- Vorname -->
-                <td style="width: 50%; padding-right: 1rem">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
+                <td style="width: 50%; padding-right: 1em">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">
                         Vorname
                     </div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.5rem;
+                            padding: 0.5em;
                         "
                     >
                         {{ firstName }}
@@ -87,17 +93,17 @@
                 </td>
                 <!-- Nachname -->
                 <td style="width: 50%">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">
                         Nachname
                     </div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5em;
                         "
                     >
                         {{ lastName }}
@@ -108,18 +114,18 @@
             <!-- Second Row -->
             <tr>
                 <!-- Straße -->
-                <td style="width: 50%; padding-right: 1rem">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
+                <td style="width: 50%; padding-right: 1em">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">
                         Straße
                     </div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ street }}
@@ -127,17 +133,17 @@
                 </td>
                 <!-- Hausnummer -->
                 <td style="width: 50%">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">
                         Hausnummer
                     </div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ houseNumber }}
@@ -148,16 +154,16 @@
             <!-- Third Row -->
             <tr>
                 <!-- PLZ -->
-                <td style="width: 50%; padding-right: 1rem">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">PLZ</div>
+                <td style="width: 50%; padding-right: 1em">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">PLZ</div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ postCode }}
@@ -165,15 +171,15 @@
                 </td>
                 <!-- Ort -->
                 <td style="width: 50%">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">Ort</div>
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">Ort</div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ city }}
@@ -184,18 +190,18 @@
             <!-- Fourth Row -->
             <tr>
                 <!-- IMEI/SN -->
-                <td style="width: 50%; padding-right: 1rem">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
+                <td style="width: 50%; padding-right: 1em">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">
                         IMEI/SN
                     </div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ imei }}
@@ -203,17 +209,15 @@
                 </td>
                 <!-- Mobil -->
                 <td style="width: 50%">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
-                        Mobil
-                    </div>
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">Mobil</div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ phone }}
@@ -224,18 +228,16 @@
             <!-- Fifth Row -->
             <tr>
                 <!-- Gerät -->
-                <td style="width: 50%; padding-right: 1rem">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
-                        Gerät
-                    </div>
+                <td style="width: 50%; padding-right: 1em">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">Gerät</div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ device }}
@@ -243,17 +245,17 @@
                 </td>
                 <!-- Email Address -->
                 <td style="width: 50%">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">
                         Email Adresse
                     </div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ email }}
@@ -262,18 +264,16 @@
             </tr>
             <tr>
                 <!-- Farbe -->
-                <td style="width: 50%; padding-right: 1rem">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
-                        Farbe
-                    </div>
+                <td style="width: 50%; padding-right: 1em">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">Farbe</div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ color }}
@@ -281,17 +281,17 @@
                 </td>
                 <!-- PIN der SIM Karte -->
                 <td style="width: 50%">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">
                         PIN der SIM Karte
                     </div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ simPin }}
@@ -302,18 +302,18 @@
             <!-- Second Row -->
             <tr>
                 <!-- Geräte Entsperrcode -->
-                <td style="width: 50%; padding-right: 1rem">
-                    <div style="font-weight: 500; margin-bottom: 0.5rem; font-size: 14px">
+                <td style="width: 50%; padding-right: 1em">
+                    <div style="font-weight: 500; margin-bottom: 0.5em; font-size: 14px">
                         Geräte Entsperrcode
                     </div>
                     <div
                         style="
                             background-color: #f9fafb;
                             color: #111827;
-                            font-size: 0.875rem;
-                            border-radius: 0.5rem;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
                             border: 1px solid #d1d5db;
-                            padding: 0.625rem;
+                            padding: 0.5rem;
                         "
                     >
                         {{ deviceUnlockCode }}
@@ -323,14 +323,14 @@
         </table>
 
         <!-- RepairsToBeMade Component -->
-        <div style="margin-top: 1.75rem">
-            <p style="font-size: 1rem; margin-bottom: 0.5em">Repariert wird:</p>
-            <table style="width: 100%; margin-top: 0.5rem; border-collapse: collapse">
+        <div style="margin-top: 1.75em">
+            <p style="font-size: 1em; margin-bottom: 0.5em">Repariert wird:</p>
+            <table style="width: 100%; margin-top: 0.5em; border-collapse: collapse">
                 {% set max_length = repairs.repairListOne|length if repairs.repairListOne|length >
                 repairs.repairListTwo|length else repairs.repairListTwo|length %} {% for i in
                 range(max_length) %}
                 <tr>
-                    <td style="width: 50%; padding: 0.5em; vertical-align: middle">
+                    <td style="width: 50%; vertical-align: middle">
                         {% if i < repairs.repairListOne|length %}
                         <label style="display: inline-flex; align-items: center">
                             <span class="checkbox checked"></span>
@@ -339,7 +339,7 @@
 
                         {% endif %}
                     </td>
-                    <td style="width: 50%; padding: 0.5em; vertical-align: middle">
+                    <td style="width: 50%; vertical-align: middle">
                         {% if i < repairs.repairListTwo|length %}
                         <label style="display: inline-flex; align-items: center">
                             <span class="checkbox checked"></span>
@@ -354,9 +354,9 @@
         </div>
 
         <!-- Third Section -->
-        <div style="margin-top: 1rem">
-            <div style="margin: 1rem 0">
-                <p style="font-size: 1rem">Mängel am Gerät vor der Reparatur:</p>
+        <div style="margin-top: 1em">
+            <div style="margin: 1em 0">
+                <p style="font-size: 1em">Mängel am Gerät vor der Reparatur:</p>
                 <table style="width: 100%; border-collapse: collapse">
                     <!-- Loop through defectsBeforeRepair and display them in the first column -->
                     {% for i in defectsBeforeRepair %}
@@ -365,7 +365,7 @@
                         <td style="width: 10%">
                             <span class="checkbox checked"></span>
                         </td>
-                        <td style="padding: 1rem">{{ i }}</td>
+                        <td>{{ i }}</td>
 
                         <!-- Only add the image in the first row -->
                         {% if loop.first %}
@@ -386,18 +386,19 @@
             </div>
 
             <!-- Additional Information Section -->
-            <div style="margin-top: 1rem">
+            <div style="margin-top: 1em">
                 <!-- Total Price and Accessories -->
                 <div>
-                    <p style="font-size: 1rem">Zubehör:</p>
-                    <table style="margin-bottom: 0.75rem">
+                    <p style="font-size: 1em">Zubehör:</p>
+                    <table style="margin-bottom: 0.75em">
                         {% for i in accessories %}
                         <tr>
                             <td style="width: 10%">
                                 <span class="checkbox checked"></span>
                             </td>
-                            <td style="padding-right: 1rem">{{i.name}}</td>
+                            <td>{{i.name}}</td>
                             <td>{{i.price}}</td>
+                            <td>€</td>
                         </tr>
                         {% endfor %}
                     </table>
@@ -405,7 +406,7 @@
                     <!-- Total Price Display -->
                     <div>
                         <span>Gesamtpreis für Zubehör:</span>
-                        <span style="margin-left: 0.5rem">
+                        <span style="margin-left: 0.5em">
                             <!-- Replace 'totalPrice' with your actual total price variable -->
                             {{ totalAccessoryPrice }} €
                         </span>
@@ -413,17 +414,15 @@
                 </div>
 
                 <!-- Water Damage Section -->
-                <div style="margin: 1rem 0; display: grid">
+                <div style="margin: 1em 0; display: grid">
                     <div>
-                        <p style="font-size: 1.125rem; font-weight: 600">
-                            Hat das Gerät einen Wasserschaden?
-                        </p>
+                        <p>Hat das Gerät einen Wasserschaden?</p>
 
-                        <table style="margin: 1rem auto; width: 100%; text-align: center">
+                        <table style="width: 100%; text-align: center">
                             <!-- First Row: Yes or No centered -->
                             <tr>
                                 <td colspan="2" style="text-align: center">
-                                    {% if hasWaterDamage %}
+                                    {% if waterDamage %}
                                     <p>Ja, es hat einen Wasserschaden</p>
                                     {% else %}
                                     <p>Nein, es hat keinen Wasserschaden</p>
@@ -437,7 +436,7 @@
                                     <img
                                         src="images/waterDamageIcon.jpg"
                                         alt="Water Damage"
-                                        style="width: 200px; height: 200px"
+                                        style="width: 200px"
                                     />
                                 </td>
                             </tr>
@@ -459,14 +458,14 @@
         </div>
 
         <!-- Pricing Section -->
-        <div style="margin: 1rem 0; width: 100%">
+        <div style="margin: 1em 0; width: 100%">
             <!-- Reparieren Sie mein Gerät bis Input Field -->
-            <div style="margin-bottom: 0.75rem">
+            <div style="margin-bottom: 0.75em">
                 <div
                     style="
                         display: block;
-                        margin-bottom: 0.5rem;
-                        font-size: 0.875rem;
+                        margin-bottom: 0.5em;
+                        font-size: 0.875em;
                         font-weight: 500;
                         color: #111827;
                     "
@@ -478,12 +477,12 @@
                         position: relative;
                         background-color: #f9fafb;
                         color: #111827;
-                        font-size: 0.875rem;
-                        border-radius: 0.5rem;
+                        font-size: 0.875em;
+                        border-radius: 0.5em;
                         border: 1px solid #d1d5db; /* Ensure the border matches */
                         display: block;
                         width: 100%;
-                        padding: 0.625rem;
+                        padding: 0.5em;
                     "
                 >
                     {{ totalPrice }}
@@ -502,7 +501,7 @@
                 </div>
             </div>
 
-            <div style="margin-bottom: 0.75rem">
+            <div style="margin-bottom: 0.75em">
                 <div
                     style="
                         display: block;
@@ -524,7 +523,7 @@
                         border: 1px solid #d1d5db; /* Ensure the border matches */
                         display: block;
                         width: 100%;
-                        padding: 0.625rem;
+                        padding: 0.5em;
                     "
                 >
                     {{ deposit }}
@@ -544,7 +543,7 @@
             </div>
 
             <!-- Gesamtpreis Input Field -->
-            <div style="margin-bottom: 0.75rem">
+            <div style="margin-bottom: 0.75em">
                 <div
                     style="
                         display: block;
@@ -566,7 +565,7 @@
                         border: 1px solid #d1d5db; /* Ensure the border matches */
                         display: block;
                         width: 100%;
-                        padding: 0.625rem;
+                        padding: 0.5em;
                     "
                 >
                     {{ totalPrice }}
@@ -588,17 +587,33 @@
 
         <!-- Terms and Confirmation Section -->
 
-        <table style="margin: 1rem 0">
+        <table style="margin: 1em auto; text-align: center">
             <tr>
-                <!-- IMEI/SN -->
-
-                <!-- Mobil -->
-                <td style="width: 10%">
+                <td style="width: 10%; vertical-align: middle">
                     <span class="checkbox checked"></span>
                 </td>
-                <td style="width: 90%; padding-right: 1rem">
+                <td style="width: 60%; vertical-align: middle">
                     Hiermit bestätige ich, dass ich mit den oben genannten Bedingungen einverstanden
                     bin und diese akzeptiere.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div>Kunde: (Unterschrift)</div>
+                    <div
+                        style="
+                            background-color: #f9fafb;
+                            color: #111827;
+                            font-size: 0.875em;
+                            border-radius: 0.5em;
+                            border: 1px solid #444546;
+                            padding: 0.5rem;
+                            height: 1.25em;
+                            width: 50%;
+                            margin: 0.5em auto;
+                            text-align: center;
+                        "
+                    ></div>
                 </td>
             </tr>
         </table>
