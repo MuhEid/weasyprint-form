@@ -9,26 +9,37 @@
                 size: A4; /* or use 'letter' depending on your preference */
                 margin: 1cm; /* Adjust as needed */
             }
+            /* Thin Font (Light) */
             @font-face {
                 font-family: "DejaVu Sans";
-                src: url("fonts/dejavu-sans.book.ttf") format("truetype");
-                font-weight: normal;
+                src: url("fonts/dejavu-sans.condensed.ttf") format("truetype");
+                font-weight: 400;
                 font-style: normal;
             }
+
+            /* Bold Font */
+            @font-face {
+                font-family: "DejaVu Sans";
+                src: url("fonts/dejaVuSans-bold.ttf") format("truetype");
+                font-weight: 700; /* Bold weight */
+                font-style: normal;
+            }
+
             body {
                 font-family: "DejaVu Sans", sans-serif;
                 font-size: 12pt;
                 margin: 0;
                 padding: 0;
                 line-height: normal;
+                font-weight: 400;
             }
             .container {
                 padding-top: 16px;
-                padding-bottom: 16px;
+                padding-bottom: 14px;
                 background-color: white;
             }
             .input-label {
-                font-weight: 500;
+                font-weight: 400;
                 margin-bottom: 0.5em;
                 font-size: 14px;
             }
@@ -36,7 +47,7 @@
             .input-container {
                 background-color: #f9fafb;
                 color: #111827;
-                font-size: 0.875em;
+                font-size: 12px;
                 border-radius: 0.5em;
                 border: 1px solid #d1d5db;
                 padding: 0.5em;
@@ -44,12 +55,12 @@
 
             .main-title {
                 font-size: 12px;
-                font-weight: bold;
+                font-weight: 700;
                 margin-bottom: 8px;
                 text-align: center;
             }
             .content {
-                font-size: 8px; /* Apply the small font size to the entire content */
+                font-size: 10px; /* Apply the small font size to the entire content */
             }
 
             .content > * + * {
@@ -58,7 +69,7 @@
 
             .content h2 {
                 font-size: 10px;
-                font-weight: 600;
+                font-weight: 700;
                 margin-bottom: 4px;
             }
 
@@ -72,26 +83,55 @@
             }
             .checkbox {
                 display: inline-block;
-                width: 12pt;
-                height: 12pt;
-                border: 1pt solid #1f4696;
-                border-radius: 50%; /* Makes it round */
+                width: 6pt; /* Reduced from 12pt to 6pt */
+                height: 6pt; /* Reduced from 12pt to 6pt */
+                border: 0.5pt solid #1f4696; /* Reduced from 1pt to 0.5pt */
+                border-radius: 50%; /* Keeps it round */
                 margin-right: 0.5rem;
                 position: relative;
+                vertical-align: middle; /* Added for vertical alignment */
             }
+
             .checkbox.checked::after {
                 content: "";
                 position: absolute;
-                top: 2pt;
-                left: 2pt;
-                width: 8pt;
-                height: 8pt;
+                top: 1pt; /* Reduced from 2pt to 1pt */
+                left: 1pt; /* Reduced from 2pt to 1pt */
+                width: 4pt; /* Reduced from 8pt to 4pt */
+                height: 4pt; /* Reduced from 8pt to 4pt */
                 background-color: #1f4696;
                 border-radius: 50%;
             }
+            .checkbox-text {
+                font-size: 12px;
+                vertical-align: middle; /* Aligns with checkbox */
+            }
+            .repair-text {
+                font-size: 0.75em;
+                vertical-align: middle; /* Added for vertical alignment */
+            }
+
             table {
                 border-collapse: collapse;
                 border-spacing: 0;
+            }
+            .signature-field {
+                text-align: left;
+            }
+
+            .signature-line {
+                border-bottom: 1px solid #000;
+                width: 70%;
+                height: 20px;
+                margin-top: 0.2em;
+            }
+            .question {
+                font-size: 0.85em;
+                font-weight: 700;
+            }
+
+            .answer {
+                font-size: 0.75em;
             }
 
             /* Additional styles if needed */
@@ -99,14 +139,14 @@
     </head>
     <body>
         <!-- Header Section -->
-        <table style="width: 100%; margin-bottom: 1.5em">
+        <table style="width: 100%; margin-bottom: 1em">
             <tr>
                 <!-- Logo Component -->
                 <td style="width: 50%">
                     <img src="images/logo.png" alt="Logo" style="width: 200px" />
                 </td>
                 <!-- Title -->
-                <td style="width: 50%; text-align: center; font-weight: bold">
+                <td style="width: 50%; text-align: center; font-weight: 700">
                     <h1 style="font-size: 1em">Reparaturauftrag</h1>
                     <h2 style="font-size: 0.5em; color: #db1f2a">
                         <span style="margin-right: 0.5em">Bestellnummer:</span>{{ orderId }}
@@ -220,7 +260,7 @@
                         {% for repair in repairs.repairsWillBeMade %}
                         <li style="margin-bottom: 0.3em">
                             <span class="checkbox checked"></span>
-                            <span style="font-size: 0.75em">{{ repair }}</span>
+                            <span class="repair-text">{{ repair }}</span>
                         </li>
                         {% endfor %}
                     </ul>
@@ -233,8 +273,8 @@
             <table style="width: 100%; border-collapse: collapse; table-layout: fixed">
                 <tr>
                     <!-- Column 2: Device Items Before Repair (with Image) -->
-                    <td style="vertical-align: top; width: 50%">
-                        <p style="font-size: 0.8em; font-weight: bold; margin-bottom: 0.5em">
+                    <td style="vertical-align: top; width: 33%">
+                        <p style="font-size: 0.8em; font-weight: 700; margin-bottom: 0.5em">
                             Mängel am Gerät vor der Reparatur:
                         </p>
                         <ul style="list-style: none; padding: 0; margin: 0">
@@ -245,19 +285,15 @@
                             </li>
                             {% endfor %}
                         </ul>
-                        <!-- Image next to the list -->
-                        <div style="margin-top: 0.5em">
-                            <img
-                                src="images/device.png"
-                                alt="Device Mockup"
-                                style="max-width: 200px"
-                            />
-                        </div>
+                    </td>
+                    <!-- Image next to the list -->
+                    <td style="margin-top: 0.5em">
+                        <img src="images/device.png" alt="Device Mockup" style="max-width: 200px" />
                     </td>
 
                     <!-- Column 3: Tests Before Repair -->
-                    <td style="vertical-align: top; width: 50%">
-                        <p style="font-size: 0.8em; font-weight: bold; margin-bottom: 0.5em">
+                    <td style="vertical-align: top; width: 33%">
+                        <p style="font-size: 0.8em; font-weight: 700; margin-bottom: 0.5em">
                             Tests vor der Reparatur:
                         </p>
                         <ul style="list-style: none; padding: 0; margin: 0">
@@ -276,19 +312,23 @@
         <!-- Third Section -->
         <div style="margin-top: 1em">
             <!-- Accessories Section -->
-            <div style="margin-top: 1em">
+            <div style="margin-top: 0.75em; width: 50%">
                 <p style="font-size: 0.9em; margin-bottom: 0.5em">Zubehör:</p>
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.75em">
+                <table style="width: 100%; font-size: 0.75em">
                     <thead>
-                        <tr>
+                        <tr style="font-weight: 400">
                             <th style="text-align: left; padding-bottom: 0.5em">&nbsp;</th>
-                            <th style="text-align: left; padding-bottom: 0.5em">Artikel</th>
-                            <th style="text-align: right; padding-bottom: 0.5em">Preis (€)</th>
+                            <th style="text-align: left; padding-bottom: 0.5em; font-weight: 400">
+                                Artikel
+                            </th>
+                            <th style="text-align: right; padding-bottom: 0.5em; font-weight: 400">
+                                Preis (€)
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for accessory in accessories %}
-                        <tr>
+                        <tr style="border-bottom: 1px solid black">
                             <td style="width: 10%; vertical-align: middle">
                                 <span class="checkbox checked"></span>
                             </td>
@@ -307,56 +347,51 @@
             </div>
 
             <!-- Water Damage Section -->
-            <div style="margin: 1em 0">
-                <p style="font-size: 0.9em; margin-bottom: 0.5em">
-                    Hat das Gerät einen Wasserschaden?
-                </p>
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.75em">
-                    <!-- First Row: Yes or No centered -->
-                    <tr>
-                        <td colspan="2" style="text-align: center">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.75em">
+                <!-- First Row -->
+                <tr>
+                    <!-- Question and Answer -->
+                    <td style="width: 60%">
+                        <p class="question">Hat das Gerät einen Wasserschaden?</p>
+                        <div>
                             {% if waterDamage %}
-                            <p style="margin: 0.5em 0">Ja, es hat einen Wasserschaden</p>
+                            <p class="answer">Ja, es hat einen Wasserschaden</p>
                             {% else %}
-                            <p style="margin: 0.5em 0">Nein, es hat keinen Wasserschaden</p>
+                            <p class="answer">Nein, es hat keinen Wasserschaden</p>
                             {% endif %}
-                        </td>
-                    </tr>
-                    <!-- Second Row: Image centered -->
-                    <tr>
-                        <td colspan="2" style="text-align: center">
-                            <img
-                                src="images/waterDamageIcon.jpg"
-                                alt="Water Damage"
-                                style="width: 100px"
-                            />
-                        </td>
-                    </tr>
-                    <!-- Third Row: Checkbox and text -->
-                    <tr>
-                        <td style="width: 10%; vertical-align: top">
-                            <span class="checkbox checked"></span>
-                        </td>
-                        <td style="width: 90%; text-align: left">
-                            <p style="margin: 0">
-                                Mir ist bewusst, dass ich bei Wasserschäden keine Garantie oder
-                                Gewährleistung nach der Reparatur erhalte.
-                            </p>
-                            <!-- Signature Field -->
-                            <div style="margin-top: 0.5em">
-                                <p style="margin: 0 0 0.2em 0">Unterschrift Kunde:</p>
-                                <div
-                                    style="border-bottom: 1px solid #000; width: 70%; height: 20px"
-                                ></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                        </div>
+                    </td>
+                    <!-- Image -->
+                    <td style="width: 40%; text-align: left">
+                        <img
+                            src="images/waterDamageIcon.jpg"
+                            alt="Water Damage"
+                            style="width: 100px"
+                        />
+                    </td>
+                </tr>
+
+                <!-- Second Row -->
+                <tr style="margin: 0.5em 0">
+                    <!-- Checkbox and Text -->
+                    <td style="text-align: left">
+                        <span class="checkbox checked"></span>
+                        <span class="checkbox-text">
+                            Mir ist bewusst, dass ich bei Wasserschäden keine Garantie oder
+                            Gewährleistung nach der Reparatur erhalte.
+                        </span>
+                    </td>
+                    <!-- Signature Field -->
+                    <td style="width: 25%; text-align: left">
+                        <p style="margin: 0 0 0.2em 0">Unterschrift Kunde:</p>
+                        <div class="signature-line"></div>
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <!-- Pricing Section -->
-        <div style="margin: 1em 0; width: 100%">
+        <div style="margin: 1em 0; padding-top: 5px; width: 100%; border-top: 0.125em solid black">
             <!-- Create a table to arrange the fields horizontally -->
             <table
                 style="
@@ -369,7 +404,7 @@
                 <tr>
                     <!-- Column 1: Reparieren Sie mein Gerät bis -->
                     <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
-                        <div style="margin-bottom: 0.3em; font-weight: 500; color: #111827">
+                        <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                             Reparieren Sie mein Gerät bis:
                         </div>
                         <div
@@ -388,7 +423,7 @@
                     </td>
                     <!-- Column 2: Anzahlung/Deposit -->
                     <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
-                        <div style="margin-bottom: 0.3em; font-weight: 500; color: #111827">
+                        <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                             Anzahlung/Deposit:
                         </div>
                         <div
@@ -407,7 +442,7 @@
                     </td>
                     <!-- Column 3: Gesamtpreis -->
                     <td style="vertical-align: top; width: 34%">
-                        <div style="margin-bottom: 0.3em; font-weight: 500; color: #111827">
+                        <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                             Gesamtpreis:
                         </div>
                         <div
@@ -596,33 +631,20 @@
             </div>
         </div>
 
-        <table style="margin: 1em auto; text-align: center">
-            <tr>
-                <td style="width: 10%; vertical-align: middle">
+        <table style="margin-bottom: 0.75em 0; width: 100%; font-size: 12px">
+            <tr style="margin: 0.5em 0">
+                <!-- Checkbox and Text -->
+                <td style="text-align: left">
                     <span class="checkbox checked"></span>
+                    <span class="checkbox-text">
+                        Hiermit bestätige ich, dass ich mit den oben genannten Bedingungen
+                        einverstanden bin und diese akzeptiere.
+                    </span>
                 </td>
-                <td style="width: 60%; vertical-align: middle">
-                    Hiermit bestätige ich, dass ich mit den oben genannten Bedingungen einverstanden
-                    bin und diese akzeptiere.
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <div>Kunde: (Unterschrift)</div>
-                    <div
-                        style="
-                            background-color: #f9fafb;
-                            color: #111827;
-                            font-size: 0.875em;
-                            border-radius: 0.5em;
-                            border: 1px solid #444546;
-                            padding: 0.5rem;
-                            height: 1.25em;
-                            width: 50%;
-                            margin: 0.5em auto;
-                            text-align: center;
-                        "
-                    ></div>
+                <!-- Signature Field -->
+                <td style="width: 25%; text-align: left">
+                    <p style="margin: 0 0 0.2em 0">Unterschrift Kunde:</p>
+                    <div class="signature-line"></div>
                 </td>
             </tr>
         </table>
