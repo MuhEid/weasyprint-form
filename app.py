@@ -23,8 +23,6 @@ def submit():
             return jsonify({"error": "Invalid content type, expected application/json"}), 400
         data = request.get_json()
 
-        print('Received values:', data)
-
         # Read the HTML template
         try:
             with open('./test.html', 'r', encoding='utf-8') as file:
