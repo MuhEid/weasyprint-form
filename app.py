@@ -7,7 +7,10 @@ from datetime import datetime
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins="http://localhost:3000")  # Allow all routes from this origin
+CORS(
+    app,
+    resources={r"/*": {"origins": ["http://localhost:3000", "http://178.254.29.140:3000"]}}
+)
 
 # Output directory for PDFs
 output_dir = './pdfs'
