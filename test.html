@@ -156,7 +156,7 @@
         </table>
 
         <!-- Second Section -->
-        <table style="width: 100%; margin-bottom: 1.5em">
+        <table style="width: 100%; margin-bottom: 0.5em">
             <tr>
                 <!-- First Main Column -->
                 <td style="vertical-align: top; width: 67%">
@@ -265,11 +265,11 @@
                         {% endfor %}
                     </ul>
                     <div style="width: 50%">
-                        <p class="">sperr muster</p>
+                        <p style="font-size: 12px">sperr muster</p>
                         <img
                             src="images/pattern-lock.png"
                             alt="Device Mockup"
-                            style="max-width: 100px"
+                            style="max-width: 80px"
                         />
                     </div>
                 </td>
@@ -320,8 +320,8 @@
         <!-- Third Section -->
         <div>
             <!-- Accessories Section -->
-            <div style="margin-top: 0.75em; width: 50%">
-                <p style="font-size: 0.9em; margin-bottom: 0.5em">Zubehör:</p>
+            <div style="width: 50%">
+                <p style="font-size: 0.7em; font-weight: 700; margin: 0">Zubehör:</p>
                 <table style="width: 100%; font-size: 0.75em">
                     <thead>
                         <tr style="font-weight: 400">
@@ -639,7 +639,7 @@
             </div>
         </div>
 
-        <table style="margin-bottom: 0.75em 0; width: 100%; font-size: 12px">
+        <table style="margin-bottom: 0.75em; width: 100%; font-size: 12px">
             <tr style="margin: 0.5em 0">
                 <!-- Checkbox and Text -->
                 <td style="text-align: left">
@@ -656,9 +656,17 @@
                 </td>
             </tr>
         </table>
-        <table style="border: 1px dashed #db1f2a; width: 100%; font-size: 12px">
+        <table
+            style="
+                border: 1px dashed #db1f2a;
+                width: 100%;
+                font-size: 12px;
+                margin-top: 0.5em;
+                border-spacing: 0;
+            "
+        >
             <tr>
-                <td style="width: 50%">
+                <td style="width: 50%; padding: 0.5em">
                     <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                         Abholung: Die Funktion des Gerätes wurde von mir bei der Abholung überprüft.
                         Ich habe eine Rechnung erhalten.
@@ -668,7 +676,8 @@
                     <div>Datum/Ort:</div>
                     <span>{{timestamp}}</span>
                 </td>
-                <td style="width: 30%">
+                <td style="width: 30%; padding: 0.5em">
+                    Kunde: (Unterschrift)
                     <div
                         style="
                             position: relative;
