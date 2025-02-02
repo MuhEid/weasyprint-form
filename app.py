@@ -25,6 +25,7 @@ def submit():
         if not request.is_json:
             return jsonify({"error": "Invalid content type, expected application/json"}), 400
         data = request.get_json()
+        data["timestamp"] = datetime.now().strftime("%Y-%m-%d")
 
         # Read the HTML template
         try:
