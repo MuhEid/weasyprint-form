@@ -253,12 +253,12 @@
                 </td>
                 <!-- Second Main Column -->
                 <td style="vertical-align: top; width: 33%; padding-left: 1em">
-                    <p style="font-size: 0.7em; font-weight: bold; margin-bottom: 0.5em">
+                    <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
                         Repariert wird:
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0">
                         {% for repair in repairs.repairsWillBeMade %}
-                        <li style="margin-bottom: 0.3em">
+                        <li style="margin-bottom: 0.15em">
                             <span class="checkbox checked"></span>
                             <span class="repair-text">{{ repair }}</span>
                         </li>
@@ -305,10 +305,24 @@
 
                     <!-- Column 3: Tests Before Repair -->
                     <td style="vertical-align: top; width: 40%">
-                        <p style="font-size: 0.7em; font-weight: 700; margin-bottom: 0.5em">
+                        <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
                             Tests vor der Reparatur:
                         </p>
-                        <ul style="list-style: none; padding: 0; margin: 0">
+                        <ul
+                            style="
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+
+                                -webkit-column-count: 2;
+                                -moz-column-count: 2;
+                                column-count: 2;
+
+                                -webkit-column-gap: 1em;
+                                -moz-column-gap: 1em;
+                                column-gap: 1em;
+                            "
+                        >
                             {% for test in repairs.testBeforeRepair %}
                             <li style="margin-bottom: 0.15em">
                                 <span class="checkbox checked"></span>
