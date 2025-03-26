@@ -282,7 +282,7 @@
                 <tr>
                     <!-- Column 2: Device Items Before Repair (with Image) -->
                     <td style="vertical-align: top; width: 33%">
-                        <p style="font-size: 0.7em; font-weight: 700; margin-bottom: 0.5em">
+                        <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
                             Mängel am Gerät vor der Reparatur:
                         </p>
                         <ul style="list-style: none; padding: 0; margin: 0">
@@ -295,18 +295,22 @@
                         </ul>
                     </td>
                     <!-- Image next to the list -->
-                    <td style="margin-top: 0.5em">
-                        <img src="images/device.png" alt="Device Mockup" style="max-width: 200px" />
+                    <td style="vertical-align: top; text-align: left">
+                        <img
+                            src="images/device.png"
+                            alt="Device Mockup"
+                            style="max-width: 150px; margin: 0.2em 0"
+                        />
                     </td>
 
                     <!-- Column 3: Tests Before Repair -->
-                    <td style="vertical-align: top; width: 33%">
+                    <td style="vertical-align: top; width: 40%">
                         <p style="font-size: 0.7em; font-weight: 700; margin-bottom: 0.5em">
                             Tests vor der Reparatur:
                         </p>
                         <ul style="list-style: none; padding: 0; margin: 0">
                             {% for test in repairs.testBeforeRepair %}
-                            <li style="margin-bottom: 0.3em">
+                            <li style="margin-bottom: 0.15em">
                                 <span class="checkbox checked"></span>
                                 <span style="font-size: 0.75em">{{ test }}</span>
                             </li>
@@ -380,6 +384,7 @@
                 </tr>
 
                 <!-- Second Row -->
+                {% if waterDamage %}
                 <tr style="margin: 0.5em 0">
                     <!-- Checkbox and Text -->
                     <td style="text-align: left">
@@ -395,6 +400,7 @@
                         <div class="signature-line"></div>
                     </td>
                 </tr>
+                {% endif %}
             </table>
         </div>
 
@@ -472,7 +478,7 @@
         </div>
 
         <!-- Terms and Confirmation Section -->
-        <div class="container">
+        <div class="container" style="break-before: page">
             <h1 class="main-title">Allgemeine Geschäftsbedingungen</h1>
             <div class="content">
                 <section>
