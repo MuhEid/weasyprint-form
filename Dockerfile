@@ -1,4 +1,4 @@
-# Use an official Python runtime as a parent image
+# Use official Python slim image
 FROM python:3.11-slim
 
 # Install system dependencies needed by WeasyPrint
@@ -10,22 +10,24 @@ RUN apt-get update && apt-get install -y \
     libffi-dev \
     libglib2.0-0 \
     fontconfig \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy requirements.txt
+# Copy requirements and install Python deps
 COPY requirements.txt .
-
-# Install any needed Python packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
+# Install gunicorn (used to run the app in production)
+RUN pip install gunicorn
+
+# Copy the entire app
 COPY . .
 
-# Expose the port the app runs on
+# Expose the Flask port
 EXPOSE 5000
 
-# Start the Flask app
-CMD ["python", "app.py"]
+# Run the app using Gunicorn (production-grade)
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
