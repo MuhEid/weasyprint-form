@@ -27,6 +27,8 @@ def submit():
         data = request.get_json()
         data["timestamp"] = datetime.now().strftime("%Y-%m-%d")
 
+        print(open("fonts/dejavu-sans.condensed.ttf").readable()) 
+
         # Read the HTML template
         try:
             with open('./test.html', 'r', encoding='utf-8') as file:
