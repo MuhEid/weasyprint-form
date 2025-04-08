@@ -6,25 +6,24 @@
         <title>Gerätereparaturformular</title>
         <style>
             @page {
-                size: A4; /* or use 'letter' depending on your preference */
-                margin: 1cm; /* Adjust as needed */
+                size: 210mm 297mm;
+                margin: 0.8cm;
             }
-            /* Thin Font (Light) */
             @font-face {
                 font-family: "DejaVu Sans";
                 src: url("./fonts/dejavu-sans.condensed.ttf") format("truetype");
                 font-weight: 400;
                 font-style: normal;
             }
-
-            /* Bold Font */
             @font-face {
                 font-family: "DejaVu Sans";
                 src: url("./fonts/dejaVuSans-bold.ttf") format("truetype");
                 font-weight: 700; /* Bold weight */
                 font-style: normal;
             }
-
+            html {
+                zoom: 1;
+            }
             body {
                 font-family: "DejaVu Sans", sans-serif;
                 font-size: 12pt;
@@ -32,11 +31,6 @@
                 padding: 0;
                 line-height: normal;
                 font-weight: 400;
-            }
-            .container {
-                padding-top: 10px;
-                padding-bottom: 10px;
-                background-color: white;
             }
             .input-label {
                 font-weight: 400;
@@ -56,7 +50,7 @@
             .main-title {
                 font-size: 12px;
                 font-weight: 700;
-                margin-bottom: 8px;
+                margin-bottom: 4px;
                 text-align: center;
             }
             .content {
@@ -64,12 +58,8 @@
                 line-height: 1.2;
             }
 
-            .content > * + * {
-                margin-top: 8px;
-            }
-
             .content h2 {
-                font-size: 10px;
+                font-size: 9.5px;
                 font-weight: 700;
                 margin-bottom: 4px;
             }
@@ -81,26 +71,25 @@
             }
 
             section {
-                margin-bottom: 6px;
+                margin-bottom: 4px;
             }
             .checkbox {
                 display: inline-block;
-                width: 6pt; /* Reduced from 12pt to 6pt */
-                height: 6pt; /* Reduced from 12pt to 6pt */
-                border: 0.5pt solid #1f4696; /* Reduced from 1pt to 0.5pt */
-                border-radius: 50%; /* Keeps it round */
+                width: 6pt;
+                height: 6pt;
+                border: 0.5pt solid #1f4696;
+                border-radius: 50%;
                 margin-right: 0.5rem;
                 position: relative;
-                vertical-align: middle; /* Added for vertical alignment */
+                vertical-align: middle;
             }
-
             .checkbox.checked::after {
                 content: "";
                 position: absolute;
-                top: 1pt; /* Reduced from 2pt to 1pt */
-                left: 1pt; /* Reduced from 2pt to 1pt */
-                width: 4pt; /* Reduced from 8pt to 4pt */
-                height: 4pt; /* Reduced from 8pt to 4pt */
+                top: 1pt;
+                left: 1pt;
+                width: 4pt;
+                height: 4pt;
                 background-color: #1f4696;
                 border-radius: 50%;
             }
@@ -112,7 +101,6 @@
                 font-size: 0.75em;
                 vertical-align: middle; /* Added for vertical alignment */
             }
-
             table {
                 border-collapse: collapse;
                 border-spacing: 0;
@@ -120,7 +108,6 @@
             .signature-field {
                 text-align: left;
             }
-
             .signature-line {
                 border-bottom: 1px solid #000;
                 width: 70%;
@@ -131,12 +118,9 @@
                 font-size: 0.85em;
                 font-weight: 700;
             }
-
             .answer {
                 font-size: 0.75em;
             }
-
-            /* Additional styles if needed */
         </style>
     </head>
     <body>
@@ -152,6 +136,7 @@
                     <h1 style="font-size: 1em">Reparaturauftrag</h1>
                     <h2 style="font-size: 0.5em; color: #db1f2a">
                         <span style="margin-right: 0.5em">Bestellnummer:</span>{{ orderId }}
+                        <span>{{timestamp}}</span>
                     </h2>
                 </td>
             </tr>
@@ -661,7 +646,7 @@
             </div>
         </div>
 
-        <table style="margin-bottom: 0.75em; width: 100%; font-size: 12px">
+        <table style="margin-bottom: 0.5em; width: 100%; font-size: 11px">
             <tr style="margin: 0.4em 0">
                 <!-- Checkbox and Text -->
                 <td style="text-align: left">
@@ -673,7 +658,7 @@
                 </td>
                 <!-- Signature Field -->
                 <td style="width: 25%; text-align: left">
-                    <p style="margin: 0 0 0.2em 0">Unterschrift Kunde:</p>
+                    <p style="margin: 0 0 0.2em 0">Kunde: (Unterschrift)</p>
                     <div class="signature-line"></div>
                 </td>
             </tr>
@@ -684,34 +669,24 @@
                 border: 1px dashed #db1f2a;
                 width: 100%;
                 font-size: 12px;
-                margin-top: 0.5em;
                 border-spacing: 0;
+                margin-top: 0.5em;
             "
         >
             <tr>
-                <td style="width: 50%; padding: 0.5em">
+                <td style="width: 55%">
                     <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                         Abholung: Die Funktion des Gerätes wurde von mir bei der Abholung überprüft.
                         Ich habe eine Rechnung erhalten.
                     </div>
                 </td>
-                <td>
+                <td style="width: 15%">
                     <div>Datum/Ort:</div>
                     <span>{{timestamp}}</span>
                 </td>
-                <td style="width: 30%; padding: 0.5em">
+                <td style="width: 30%; padding: 0.4em">
                     Kunde: (Unterschrift)
-                    <div
-                        style="
-                            position: relative;
-                            background-color: #f9fafb;
-                            color: #111827;
-                            border-radius: 0.3em;
-                            border: 1px solid #d1d5db;
-                            padding: 1em;
-                            text-align: right;
-                        "
-                    ></div>
+                    <div class="signature-line"></div>
                 </td>
             </tr>
         </table>
