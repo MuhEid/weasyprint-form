@@ -9,7 +9,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(
     app,
-    resources={r"/*": {"origins": ["http://localhost:3000", "http://178.254.29.140:3000"]}}
+    resources={r"/*": {"origins": [
+            "http://localhost:3000",
+            "http://178.254.29.140:3000",
+            "https://www.handytechs.de"
+        ]}}
 )
 
 # Output directory for PDFs
@@ -26,8 +30,6 @@ def submit():
             return jsonify({"error": "Invalid content type, expected application/json"}), 400
         data = request.get_json()
         data["timestamp"] = datetime.now().strftime("%Y-%m-%d")
-
-        print(open("fonts/dejavu-sans.condensed.ttf").readable()) 
 
         # Read the HTML template
         try:
@@ -58,7 +60,7 @@ def submit():
         print("Error in /api/submit:", e)
         return jsonify({"error": str(e)}), 500
 
-@app.route('/pdfs/<filename>', methods=['GET'])
+@app.route('/api/pdfs/<filename>', methods=['GET'])
 def download_pdf(filename):
     try:
         return send_from_directory(output_dir, filename, as_attachment=True)
