@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>New Phone Repair Order</title>
+        <style>
+            /* Add your styles here */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f6f6f6;
+                padding: 20px;
+            }
+            .container {
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 5px;
+            }
+            .header {
+                border-bottom: 1px solid #eaeaea;
+                margin-bottom: 20px;
+            }
+            .details {
+                margin-bottom: 10px;
+            }
+            .details strong {
+                display: inline-block;
+                width: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h2>New Phone Repair Order</h2>
+                <p>Order ID: {{orderId}}</p>
+            </div>
+            <div class="details"><strong>Name:</strong> {{firstName}}</div>
+            <div class="details"><strong>Email:</strong> {{email}}</div>
+            <div class="details"><strong>Phone Number:</strong> {{phone}}</div>
+            <div class="details"><strong>Phone Model:</strong> {{device}}</div>
+            <div class="details">
+                <strong>Defects:</strong>
+                <ul>
+                    {{#each repairs}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="details"><strong>Additional Notes:</strong> {{notes}}</div>
+        </div>
+    </body>
+</html>
