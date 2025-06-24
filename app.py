@@ -29,7 +29,48 @@ SMTP_PORT     = int(os.getenv("SMTP_PORT", 465))
 SMTP_USERNAME = os.getenv("EMAIL_USER")
 SMTP_PASSWORD = os.getenv("EMAIL_PASS")
 SENDER_EMAIL  = os.getenv("EMAIL_ADDRESS")
-
+repairs_made = [
+    "Diagnose",
+    "Software",
+    "Wasserschaden",
+    "Akku",
+    "Displayschaden/Touchglas",
+    "Lautsprecher",
+    "Mikrofon",
+    "Hörmuschel",
+    "WLAN-Netz",
+    "Mobilfunknetz",
+    "Kopfhörerbuchse",
+    "Ladebuchse",
+    "Volumentaste",
+    "Stummschalttaste",
+    "Power-Taste",
+    "Home-Taste",
+    "Finger-ID",
+    "Gesichts-ID",
+    "Haupt kamera",
+    "Front kamera",
+]
+test_after_repair = [
+    "Touchfunktion",
+    "Lautsprecher",
+    "Mikrofon",
+    "Hörmuschel",
+    "Anrufsensor",
+    "Flashlicht",
+    "WLAN-Netz",
+    "Mobilfunknetz",
+    "Kopfhörerbuchse",
+    "Ladebuchse",
+    "Volumentaste",
+    "Stummschalttaste",
+    "Power-Taste",
+    "Home-Taste",
+    "Finger-ID",
+    "Gesichts-ID",
+    "Hauptkamera",
+    "Frontkamera",
+]
 # Increase the recursion limit if necessary
 sys.setrecursionlimit(5000)
 
@@ -49,7 +90,7 @@ def submit():
             print("Error reading template:", e)
             return jsonify({"error": "Template file not found or unreadable."}), 500
 
-        html_content = template.render(data).encode( "utf-8" )
+        html_content = template.render(**data, repairs_made=repairs_made, test_after_repair=test_after_repair).encode( "utf-8" )
 
 
         # Generate PDF
