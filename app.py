@@ -54,7 +54,7 @@ def submit():
 
         # Generate PDF
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f'output_{data["orderId"]}_{ts}.pdf'
+        filename = f'{data["lastName"]}_{data["orderId"]}_{ts}.pdf'
         pdf_path = os.path.join(output_dir, filename)
         HTML(string=html_content, base_url='.', encoding='utf-8').write_pdf(pdf_path)
 
@@ -114,7 +114,7 @@ def send_email():
 
         # prepare email
         msg = EmailMessage()
-        msg["From"]    = f"PhonyTechs Support <{SENDER_EMAIL}>"
+        msg["From"]    = f"PhonyTechs Order {formData['lastName']} <{SENDER_EMAIL}>"
         msg["To"]      = to_addr
         msg["Subject"] = subject
         msg.set_content("Your email client does not support HTML.")
