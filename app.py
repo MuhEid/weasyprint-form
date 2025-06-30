@@ -84,7 +84,7 @@ def submit():
 
         # Read the HTML template
         try:
-            with open('./test.html', 'r', encoding='utf-8') as file:
+            with open('templates/form.html', 'r', encoding='utf-8') as file:
                 template = Template(file.read())
         except Exception as e:
             print("Error reading template:", e)
