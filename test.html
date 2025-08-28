@@ -1,312 +1,324 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
-        <title>Gerätereparaturformular</title>
-        <style>
-            @page {
-                size: 210mm 297mm;
-                margin: 0.8cm;
-            }
-            @font-face {
-                font-family: "DejaVu Sans";
-                src: url("./fonts/dejavu-sans.condensed.ttf") format("truetype");
-                font-weight: 400;
-                font-style: normal;
-            }
-            @font-face {
-                font-family: "DejaVu Sans";
-                src: url("./fonts/dejaVuSans-bold.ttf") format("truetype");
-                font-weight: 700; /* Bold weight */
-                font-style: normal;
-            }
-            html {
-                zoom: 1;
-            }
-            body {
-                font-family: "DejaVu Sans", sans-serif;
-                font-size: 12pt;
-                margin: 0;
-                padding: 0;
-                line-height: normal;
-                font-weight: 400;
-            }
-            .input-label {
-                font-weight: 400;
-                margin-bottom: 0.5em;
-                font-size: 12px;
-            }
 
-            .input-container {
-                background-color: #f9fafb;
-                color: #111827;
-                font-size: 12px;
-                border-radius: 0.5em;
-                border: 1px solid #d1d5db;
-                padding: 0.5em;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
+    <title>Gerätereparaturformular</title>
+    <style>
+        @page {
+            size: 210mm 297mm;
+            margin: 0.8cm;
+        }
 
-            .main-title {
-                font-size: 12px;
-                font-weight: 700;
-                margin-bottom: 4px;
-                text-align: center;
-            }
-            .content {
-                font-size: 9.5px;
-                line-height: 1.2;
-            }
+        @font-face {
+            font-family: "DejaVu Sans";
+            src: url("./fonts/dejavu-sans.condensed.ttf") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+        }
 
-            .content h2 {
-                font-size: 9.5px;
-                font-weight: 700;
-                margin-bottom: 4px;
-            }
+        @font-face {
+            font-family: "DejaVu Sans";
+            src: url("./fonts/dejaVuSans-bold.ttf") format("truetype");
+            font-weight: 700;
+            /* Bold weight */
+            font-style: normal;
+        }
 
-            .content p {
-                margin: 0;
-                padding: 0;
-                text-align: justify;
-            }
-            .note-box {
-                height: 100%;
-                width: 100%;
-                min-height: 100px;
-                border: 1px solid #aaa;
-                padding: 0.5em;
-                color: #333;
-                background-color: #f9f9f9;
-            }
+        html {
+            zoom: 1;
+        }
 
-            section {
-                margin-bottom: 4px;
-            }
-            .checkbox {
-                display: inline-block;
-                width: 6pt;
-                height: 6pt;
-                border: 0.5pt solid #1f4696;
-                border-radius: 50%;
-                margin-right: 0.5rem;
-                position: relative;
-                vertical-align: middle;
-            }
-            .checkbox.checked::after {
-                content: "";
-                position: absolute;
-                top: 1pt;
-                left: 1pt;
-                width: 4pt;
-                height: 4pt;
-                background-color: #1f4696;
-                border-radius: 50%;
-            }
-            .checkbox-text {
-                font-size: 12px;
-                vertical-align: middle; /* Aligns with checkbox */
-            }
-            .repair-text {
-                font-size: 0.75em;
-                vertical-align: middle; /* Added for vertical alignment */
-            }
-            table {
-                border-collapse: collapse;
-                border-spacing: 0;
-            }
-            .signature-field {
-                text-align: left;
-            }
-            .signature-line {
-                border-bottom: 1px solid #000;
-                width: 70%;
-                height: 20px;
-                margin-top: 0.2em;
-            }
-            .question {
-                font-size: 0.85em;
-                font-weight: 700;
-            }
-            .answer {
-                font-size: 0.75em;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Header Section -->
-        <table style="width: 100%; margin-bottom: 1em">
+        body {
+            font-family: "DejaVu Sans", sans-serif;
+            font-size: 12pt;
+            margin: 0;
+            padding: 0;
+            line-height: normal;
+            font-weight: 400;
+        }
+
+        .input-label {
+            font-weight: 400;
+            margin-bottom: 0.5em;
+            font-size: 12px;
+        }
+
+        .input-container {
+            background-color: #f9fafb;
+            color: #111827;
+            font-size: 12px;
+            border-radius: 0.5em;
+            border: 1px solid #d1d5db;
+            padding: 0.5em;
+        }
+
+        .main-title {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .content {
+            font-size: 9.5px;
+            line-height: 1.2;
+        }
+
+        .content h2 {
+            font-size: 9.5px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .content p {
+            margin: 0;
+            padding: 0;
+            text-align: justify;
+        }
+
+        .note-box {
+            height: 100%;
+            width: 100%;
+            min-height: 100px;
+            border: 1px solid #aaa;
+            padding: 0.5em;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        section {
+            margin-bottom: 4px;
+        }
+
+        .checkbox {
+            display: inline-block;
+            width: 6pt;
+            height: 6pt;
+            border: 0.5pt solid #1f4696;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            position: relative;
+            vertical-align: middle;
+        }
+
+        .checkbox.checked::after {
+            content: "";
+            position: absolute;
+            top: 1pt;
+            left: 1pt;
+            width: 4pt;
+            height: 4pt;
+            background-color: #1f4696;
+            border-radius: 50%;
+        }
+
+        .checkbox-text {
+            font-size: 12px;
+            vertical-align: middle;
+            /* Aligns with checkbox */
+        }
+
+        .repair-text {
+            font-size: 0.75em;
+            vertical-align: middle;
+            /* Added for vertical alignment */
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .signature-field {
+            text-align: left;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #000;
+            width: 70%;
+            height: 20px;
+            margin-top: 0.2em;
+        }
+
+        .question {
+            font-size: 0.85em;
+            font-weight: 700;
+        }
+
+        .answer {
+            font-size: 0.75em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <table style="width: 100%; margin-bottom: 1em">
+        <tr>
+            <!-- Logo Component -->
+            <td style="width: 50%">
+                <img src="images/logo.png" alt="Logo" style="width: 200px" />
+            </td>
+            <!-- Title -->
+            <td style="width: 50%; text-align: center; font-weight: 700">
+                <h1 style="font-size: 1em">Reparaturauftrag</h1>
+                <h2 style="font-size: 0.5em; color: #db1f2a">
+                    <span style="margin-right: 0.5em">Auftrag-Nr.:</span>{{ orderId }}
+                    <span>{{timestamp}}</span>
+                </h2>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Second Section -->
+    <table style="width: 100%; margin-bottom: 0.5em">
+        <tr>
+            <!-- First Main Column -->
+            <td style="vertical-align: top; width: 67%">
+                <table style="width: 100%">
+                    <!-- First Row -->
+                    <tr>
+                        <!-- Vorname -->
+                        <td style="width: 50%; padding-right: 1em">
+                            <div class="input-label">Vorname</div>
+                            <div class="input-container">{{ firstName }}</div>
+                        </td>
+                        <!-- Nachname -->
+                        <td style="width: 50%">
+                            <div class="input-label">Nachname</div>
+                            <div class="input-container">{{ lastName }}</div>
+                        </td>
+                    </tr>
+                    <!-- Second Row -->
+                    <tr>
+                        <!-- Straße -->
+                        <td style="width: 50%; padding-right: 1em">
+                            <div class="input-label">Straße</div>
+                            <div class="input-container">{{ street }}</div>
+                        </td>
+                        <!-- Hausnummer -->
+                        <td style="width: 50%">
+                            <div class="input-label">Hausnummer</div>
+                            <div class="input-container">{{ houseNumber }}</div>
+                        </td>
+                    </tr>
+                    <!-- Third Row -->
+                    <tr>
+                        <!-- PLZ -->
+                        <td style="width: 50%; padding-right: 1em">
+                            <div class="input-label">PLZ</div>
+                            <div class="input-container">{{ postCode }}</div>
+                        </td>
+                        <!-- Ort -->
+                        <td style="width: 50%">
+                            <div class="input-label">Ort</div>
+                            <div class="input-container">{{ city }}</div>
+                        </td>
+                    </tr>
+                    <!-- Fourth Row -->
+                    <tr>
+                        <!-- IMEI/SN -->
+                        <td style="width: 50%; padding-right: 1em">
+                            <div class="input-label">IMEI/SN</div>
+                            <div class="input-container">{{ serialNumber }}</div>
+                        </td>
+                        <!-- Mobil -->
+                        <td style="width: 50%">
+                            <div class="input-label">Mobil</div>
+                            <div class="input-container">{{ phone }}</div>
+                        </td>
+                    </tr>
+                    <!-- Fifth Row -->
+                    <tr>
+                        <!-- Gerät -->
+                        <td style="width: 50%; padding-right: 1em">
+                            <div class="input-label">Gerät</div>
+                            <div class="input-container">{{ device }}</div>
+                        </td>
+                        <!-- Email Adresse -->
+                        <td style="width: 50%">
+                            <div class="input-label">Email Adresse</div>
+                            <div class="input-container">{{ email }}</div>
+                        </td>
+                    </tr>
+                    <!-- Sixth Row -->
+                    <tr>
+                        <!-- Farbe -->
+                        <td style="width: 50%; padding-right: 1em">
+                            <div class="input-label">Farbe</div>
+                            <div class="input-container">{{ color }}</div>
+                        </td>
+                        <!-- PIN der SIM Karte -->
+                        <td style="width: 50%">
+                            <div class="input-label">PIN der SIM Karte</div>
+                            <div class="input-container">{{ simPin }}</div>
+                        </td>
+                    </tr>
+                    <!-- Seventh Row -->
+                    <tr>
+                        <!-- Geräte Entsperrcode -->
+                        <td style="width: 50%; padding-right: 1em">
+                            <div class="input-label">Geräte Entsperrcode</div>
+                            <div class="input-container">{{ deviceUnlockCode }}</div>
+                        </td>
+                        <!-- Empty cell to balance the table -->
+                        <td style="width: 50%"></td>
+                    </tr>
+                </table>
+            </td>
+            <!-- Second Main Column -->
+            <td style="vertical-align: top; width: 33%; padding-left: 1em">
+                <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
+                    Repariert wird:
+                </p>
+                <ul style="list-style: none; padding: 0; margin: 0">
+                    {% for repair in repairs.repairsWillBeMade %}
+                    <li style="margin-bottom: 0.15em">
+                        <span class="checkbox checked"></span>
+                        <span class="repair-text">{{ repair }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div style="width: 50%">
+                    <p style="font-size: 12px">sperr muster</p>
+                    <img src="images/pattern-lock.png" alt="Device Mockup" style="max-width: 80px" />
+                </div>
+                <div class="input-container" style="height: 80px"></div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Repairs Section -->
+    <div style="margin-top: 0.5em">
+        <table style="width: 100%; border-collapse: collapse; table-layout: fixed">
             <tr>
-                <!-- Logo Component -->
-                <td style="width: 50%">
-                    <img src="images/logo.png" alt="Logo" style="width: 200px" />
-                </td>
-                <!-- Title -->
-                <td style="width: 50%; text-align: center; font-weight: 700">
-                    <h1 style="font-size: 1em">Reparaturauftrag</h1>
-                    <h2 style="font-size: 0.5em; color: #db1f2a">
-                        <span style="margin-right: 0.5em">Auftrag-Nr.:</span>{{ orderId }}
-                        <span>{{timestamp}}</span>
-                    </h2>
-                </td>
-            </tr>
-        </table>
-
-        <!-- Second Section -->
-        <table style="width: 100%; margin-bottom: 0.5em">
-            <tr>
-                <!-- First Main Column -->
-                <td style="vertical-align: top; width: 67%">
-                    <table style="width: 100%">
-                        <!-- First Row -->
-                        <tr>
-                            <!-- Vorname -->
-                            <td style="width: 50%; padding-right: 1em">
-                                <div class="input-label">Vorname</div>
-                                <div class="input-container">{{ firstName }}</div>
-                            </td>
-                            <!-- Nachname -->
-                            <td style="width: 50%">
-                                <div class="input-label">Nachname</div>
-                                <div class="input-container">{{ lastName }}</div>
-                            </td>
-                        </tr>
-                        <!-- Second Row -->
-                        <tr>
-                            <!-- Straße -->
-                            <td style="width: 50%; padding-right: 1em">
-                                <div class="input-label">Straße</div>
-                                <div class="input-container">{{ street }}</div>
-                            </td>
-                            <!-- Hausnummer -->
-                            <td style="width: 50%">
-                                <div class="input-label">Hausnummer</div>
-                                <div class="input-container">{{ houseNumber }}</div>
-                            </td>
-                        </tr>
-                        <!-- Third Row -->
-                        <tr>
-                            <!-- PLZ -->
-                            <td style="width: 50%; padding-right: 1em">
-                                <div class="input-label">PLZ</div>
-                                <div class="input-container">{{ postCode }}</div>
-                            </td>
-                            <!-- Ort -->
-                            <td style="width: 50%">
-                                <div class="input-label">Ort</div>
-                                <div class="input-container">{{ city }}</div>
-                            </td>
-                        </tr>
-                        <!-- Fourth Row -->
-                        <tr>
-                            <!-- IMEI/SN -->
-                            <td style="width: 50%; padding-right: 1em">
-                                <div class="input-label">IMEI/SN</div>
-                                <div class="input-container">{{ serialNumber }}</div>
-                            </td>
-                            <!-- Mobil -->
-                            <td style="width: 50%">
-                                <div class="input-label">Mobil</div>
-                                <div class="input-container">{{ phone }}</div>
-                            </td>
-                        </tr>
-                        <!-- Fifth Row -->
-                        <tr>
-                            <!-- Gerät -->
-                            <td style="width: 50%; padding-right: 1em">
-                                <div class="input-label">Gerät</div>
-                                <div class="input-container">{{ device }}</div>
-                            </td>
-                            <!-- Email Adresse -->
-                            <td style="width: 50%">
-                                <div class="input-label">Email Adresse</div>
-                                <div class="input-container">{{ email }}</div>
-                            </td>
-                        </tr>
-                        <!-- Sixth Row -->
-                        <tr>
-                            <!-- Farbe -->
-                            <td style="width: 50%; padding-right: 1em">
-                                <div class="input-label">Farbe</div>
-                                <div class="input-container">{{ color }}</div>
-                            </td>
-                            <!-- PIN der SIM Karte -->
-                            <td style="width: 50%">
-                                <div class="input-label">PIN der SIM Karte</div>
-                                <div class="input-container">{{ simPin }}</div>
-                            </td>
-                        </tr>
-                        <!-- Seventh Row -->
-                        <tr>
-                            <!-- Geräte Entsperrcode -->
-                            <td style="width: 50%; padding-right: 1em">
-                                <div class="input-label">Geräte Entsperrcode</div>
-                                <div class="input-container">{{ deviceUnlockCode }}</div>
-                            </td>
-                            <!-- Empty cell to balance the table -->
-                            <td style="width: 50%"></td>
-                        </tr>
-                    </table>
-                </td>
-                <!-- Second Main Column -->
-                <td style="vertical-align: top; width: 33%; padding-left: 1em">
+                <!-- Column 2: Device Items Before Repair (with Image) -->
+                <td style="vertical-align: top; width: 33%">
                     <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
-                        Repariert wird:
+                        Mängel am Gerät vor der Reparatur:
                     </p>
                     <ul style="list-style: none; padding: 0; margin: 0">
-                        {% for repair in repairs.repairsWillBeMade %}
-                        <li style="margin-bottom: 0.15em">
+                        {% for item in repairs.deviceItemsBeforeRepair %}
+                        <li style="margin-bottom: 0.2em; text-align: left">
                             <span class="checkbox checked"></span>
-                            <span class="repair-text">{{ repair }}</span>
+                            <span style="font-size: 0.75em">{{ item }}</span>
                         </li>
                         {% endfor %}
                     </ul>
-                    <div style="width: 50%">
-                        <p style="font-size: 12px">sperr muster</p>
-                        <img
-                            src="images/pattern-lock.png"
-                            alt="Device Mockup"
-                            style="max-width: 80px"
-                        />
-                    </div>
-                    <div class="input-container" style="height: 80px"></div>
                 </td>
-            </tr>
-        </table>
+                <!-- Image next to the list -->
+                <td style="vertical-align: top; text-align: left">
+                    <img src="images/device.png" alt="Device Mockup" style="max-width: 150px; margin: 0.2em 0" />
+                </td>
 
-        <!-- Repairs Section -->
-        <div style="margin-top: 0.5em">
-            <table style="width: 100%; border-collapse: collapse; table-layout: fixed">
-                <tr>
-                    <!-- Column 2: Device Items Before Repair (with Image) -->
-                    <td style="vertical-align: top; width: 33%">
-                        <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
-                            Mängel am Gerät vor der Reparatur:
-                        </p>
-                        <ul style="list-style: none; padding: 0; margin: 0">
-                            {% for item in repairs.deviceItemsBeforeRepair %}
-                            <li style="margin-bottom: 0.2em; text-align: left">
-                                <span class="checkbox checked"></span>
-                                <span style="font-size: 0.75em">{{ item }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                    <!-- Image next to the list -->
-                    <td style="vertical-align: top; text-align: left">
-                        <img
-                            src="images/device.png"
-                            alt="Device Mockup"
-                            style="max-width: 150px; margin: 0.2em 0"
-                        />
-                    </td>
-
-                    <!-- Column 3: Tests Before Repair -->
-                    <td style="vertical-align: top; width: 40%">
-                        <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
-                            Tests vor der Reparatur:
-                        </p>
-                        <ul
-                            style="
+                <!-- Column 3: Tests Before Repair -->
+                <td style="vertical-align: top; width: 40%">
+                    <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
+                        Tests vor der Reparatur:
+                    </p>
+                    <ul style="
                                 list-style: none;
                                 margin: 0;
                                 padding: 0;
@@ -318,124 +330,116 @@
                                 -webkit-column-gap: 1em;
                                 -moz-column-gap: 1em;
                                 column-gap: 1em;
-                            "
-                        >
-                            {% for test in repairs.testBeforeRepair %}
-                            <li style="margin-bottom: 0.15em">
-                                <span class="checkbox checked"></span>
-                                <span style="font-size: 0.75em">{{ test }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Third Section -->
-        <div>
-            <!-- Accessories Section -->
-            <div style="width: 50%">
-                <p style="font-size: 0.7em; font-weight: 700; margin: 0">Zubehör:</p>
-                <table style="width: 100%; font-size: 0.75em">
-                    <thead>
-                        <tr style="font-weight: 400">
-                            <th style="text-align: left; padding-bottom: 0.5em">&nbsp;</th>
-                            <th style="text-align: left; padding-bottom: 0.5em; font-weight: 400">
-                                Artikel
-                            </th>
-                            <th style="text-align: right; padding-bottom: 0.5em; font-weight: 400">
-                                Preis (€)
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for accessory in accessories %}
-                        <tr style="border-bottom: 1px solid black">
-                            <td style="width: 10%; vertical-align: middle">
-                                <span class="checkbox checked"></span>
-                            </td>
-                            <td style="vertical-align: middle">{{ accessory.name }}</td>
-                            <td style="vertical-align: middle; text-align: right">
-                                {{ accessory.price }}
-                            </td>
-                        </tr>
+                            ">
+                        {% for test in repairs.testBeforeRepair %}
+                        <li style="margin-bottom: 0.15em">
+                            <span class="checkbox checked"></span>
+                            <span style="font-size: 0.75em">{{ test }}</span>
+                        </li>
                         {% endfor %}
-                    </tbody>
-                </table>
-                <!-- Total Price Display -->
-                <div style="margin-top: 0.5em; font-size: 0.75em; text-align: right">
-                    <strong>Gesamtpreis für Zubehör: {{ totalAccessoryPrice }} €</strong>
-                </div>
-            </div>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-            <!-- Water Damage Section -->
-            <table style="width: 100%; border-collapse: collapse; font-size: 0.75em">
-                <!-- First Row -->
-                <tr>
-                    <!-- Question and Answer -->
-                    <td style="width: 60%">
-                        <p class="question">Hat das Gerät einen Wasserschaden?</p>
-                        <div>
-                            {% if waterDamage %}
-                            <p class="answer">Ja, es hat einen Wasserschaden</p>
-                            {% else %}
-                            <p class="answer">Nein, es hat keinen Wasserschaden</p>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <!-- Image -->
-                    <td style="width: 40%; text-align: left">
-                        <img
-                            src="images/waterDamageIcon.jpg"
-                            alt="Water Damage"
-                            style="width: 100px"
-                        />
-                    </td>
-                </tr>
-
-                <!-- Second Row -->
-                {% if waterDamage %}
-                <tr style="margin: 0.5em 0">
-                    <!-- Checkbox and Text -->
-                    <td style="text-align: left">
-                        <span class="checkbox checked"></span>
-                        <span class="checkbox-text">
-                            Mir ist bewusst, dass ich bei Wasserschäden keine Garantie oder
-                            Gewährleistung nach der Reparatur erhalte.
-                        </span>
-                    </td>
-                    <!-- Signature Field -->
-                    <td style="width: 25%; text-align: left">
-                        <p style="margin: 0 0 0.2em 0">
-                            Unterschrift Kunde: <span>{{timestamp}}</span>
-                        </p>
-                        <div class="signature-line"></div>
-                    </td>
-                </tr>
-                {% endif %}
+    <!-- Third Section -->
+    <div>
+        <!-- Accessories Section -->
+        <div style="width: 50%">
+            <p style="font-size: 0.7em; font-weight: 700; margin: 0">Zubehör:</p>
+            <table style="width: 100%; font-size: 0.75em">
+                <thead>
+                    <tr style="font-weight: 400">
+                        <th style="text-align: left; padding-bottom: 0.5em">&nbsp;</th>
+                        <th style="text-align: left; padding-bottom: 0.5em; font-weight: 400">
+                            Artikel
+                        </th>
+                        <th style="text-align: right; padding-bottom: 0.5em; font-weight: 400">
+                            Preis (€)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for accessory in accessories %}
+                    <tr style="border-bottom: 1px solid black">
+                        <td style="width: 10%; vertical-align: middle">
+                            <span class="checkbox checked"></span>
+                        </td>
+                        <td style="vertical-align: middle">{{ accessory.name }}</td>
+                        <td style="vertical-align: middle; text-align: right">
+                            {{ accessory.price }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
+            <!-- Total Price Display -->
+            <div style="margin-top: 0.5em; font-size: 0.75em; text-align: right">
+                <strong>Gesamtpreis für Zubehör: {{ totalAccessoryPrice }} €</strong>
+            </div>
         </div>
 
-        <!-- Pricing Section -->
-        <div style="margin: 1em 0; padding-top: 5px; width: 100%; border-top: 0.125em solid black">
-            <!-- Create a table to arrange the fields horizontally -->
-            <table
-                style="
+        <!-- Water Damage Section -->
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.75em">
+            <!-- First Row -->
+            <tr>
+                <!-- Question and Answer -->
+                <td style="width: 60%">
+                    <p class="question">Hat das Gerät einen Wasserschaden?</p>
+                    <div>
+                        {% if waterDamage %}
+                        <p class="answer">Ja, es hat einen Wasserschaden</p>
+                        {% else %}
+                        <p class="answer">Nein, es hat keinen Wasserschaden</p>
+                        {% endif %}
+                    </div>
+                </td>
+                <!-- Image -->
+                <td style="width: 40%; text-align: left">
+                    <img src="images/waterDamageIcon.jpg" alt="Water Damage" style="width: 100px" />
+                </td>
+            </tr>
+
+            <!-- Second Row -->
+            {% if waterDamage %}
+            <tr style="margin: 0.5em 0">
+                <!-- Checkbox and Text -->
+                <td style="text-align: left">
+                    <span class="checkbox checked"></span>
+                    <span class="checkbox-text">
+                        Mir ist bewusst, dass ich bei Wasserschäden keine Garantie oder
+                        Gewährleistung nach der Reparatur erhalte.
+                    </span>
+                </td>
+                <!-- Signature Field -->
+                <td style="width: 25%; text-align: left">
+                    <p style="margin: 0 0 0.2em 0">
+                        Unterschrift Kunde: <span>{{timestamp}}</span>
+                    </p>
+                    <div class="signature-line"></div>
+                </td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    <!-- Pricing Section -->
+    <div style="margin: 1em 0; padding-top: 5px; width: 100%; border-top: 0.125em solid black">
+        <!-- Create a table to arrange the fields horizontally -->
+        <table style="
                     width: 100%;
                     border-collapse: collapse;
                     table-layout: fixed;
                     font-size: 0.75em;
-                "
-            >
-                <tr>
-                    <!-- Column 1: Reparieren Sie mein Gerät bis -->
-                    <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
-                        <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
-                            Reparieren Sie mein Gerät bis:
-                        </div>
-                        <div
-                            style="
+                ">
+            <tr>
+                <!-- Column 1: Reparieren Sie mein Gerät bis -->
+                <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
+                    <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
+                        Reparieren Sie mein Gerät bis:
+                    </div>
+                    <div style="
                                 position: relative;
                                 background-color: #f9fafb;
                                 color: #111827;
@@ -443,18 +447,16 @@
                                 border: 1px solid #d1d5db;
                                 padding: 0.3em;
                                 text-align: right;
-                            "
-                        >
-                            {{ repairMaxPrice }} €
-                        </div>
-                    </td>
-                    <!-- Column 2: Anzahlung/Deposit -->
-                    <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
-                        <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
-                            Anzahlung/Deposit:
-                        </div>
-                        <div
-                            style="
+                            ">
+                        {{ repairMaxPrice }} €
+                    </div>
+                </td>
+                <!-- Column 2: Anzahlung/Deposit -->
+                <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
+                    <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
+                        Anzahlung/Deposit:
+                    </div>
+                    <div style="
                                 position: relative;
                                 background-color: #f9fafb;
                                 color: #111827;
@@ -462,18 +464,16 @@
                                 border: 1px solid #d1d5db;
                                 padding: 0.3em;
                                 text-align: right;
-                            "
-                        >
-                            {{ deposit }} €
-                        </div>
-                    </td>
-                    <!-- Column 3: Gesamtpreis -->
-                    <td style="vertical-align: top; width: 34%">
-                        <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
-                            Gesamtpreis:
-                        </div>
-                        <div
-                            style="
+                            ">
+                        {{ deposit }} €
+                    </div>
+                </td>
+                <!-- Column 3: Gesamtpreis -->
+                <td style="vertical-align: top; width: 34%">
+                    <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
+                        Gesamtpreis:
+                    </div>
+                    <div style="
                                 position: relative;
                                 background-color: #f9fafb;
                                 color: #111827;
@@ -481,103 +481,30 @@
                                 border: 1px solid #d1d5db;
                                 padding: 0.3em;
                                 text-align: right;
-                            "
-                        >
-                            {{ totalPrice }} €
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Repairs Section -->
-        <div style="break-before: page">
-            <table style="width: 100%; border-collapse: collapse; table-layout: fixed">
-                <tr>
-                    <!-- Column 1: Device Items After Repair -->
-                    <td style="vertical-align: top; width: 35%">
-                        <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
-                            Checkliste:
-                        </p>
-                        <ul
-                            style="
-                                list-style: none;
-                                margin: 0;
-                                padding: 0;
-
-                                -webkit-column-count: 2;
-                                -moz-column-count: 2;
-                                column-count: 2;
-
-                                -webkit-column-gap: 1em;
-                                -moz-column-gap: 1em;
-                                column-gap: 1em;
-                            "
-                        >
-                            {% for test in test_after_repair %}
-                            <li style="margin-bottom: 0.15em">
-                                <span class="checkbox"></span>
-                                <span style="font-size: 0.75em">{{ test }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-
-                    <td style="vertical-align: top; width: 35%">
-                        <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
-                            Repariert sein:
-                        </p>
-                        <ul
-                            style="
-                                list-style: none;
-                                margin: 0;
-                                padding: 0;
-
-                                -webkit-column-count: 2;
-                                -moz-column-count: 2;
-                                column-count: 2;
-
-                                -webkit-column-gap: 1em;
-                                -moz-column-gap: 1em;
-                                column-gap: 1em;
-                            "
-                        >
-                            {% for item in repairs_made %}
-                            <li style="margin-bottom: 0.2em; text-align: left">
-                                <span class="checkbox"></span>
-                                <span style="font-size: 0.75em">{{ item }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                    <!-- Column 3: Tests Before Repair -->
-                    <td style="vertical-align: top">
-                        <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">Notizen:</p>
-                        <div class="input-container" style="height: 80px"></div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <table
-            style="
-                border: 1px dashed #db1f2a;
-                width: 100%;
-                font-size: 12px;
-                border-spacing: 0;
-                margin-top: 0.5em;
-                padding: 0.5em;
-            "
-        >
+                            ">
+                        {{ totalPrice }} €
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table style="
+                                    border: 1px dashed #db1f2a;
+                                    width: 100%;
+                                    font-size: 12px;
+                                    border-spacing: 0;
+                                    margin-top: 0.5em;
+                                    padding: 0.5em;
+                                ">
             <tr>
                 <td style="width: 55%">
                     <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
-                        Abholung: Die Funktion des Gerätes wurde von mir bei der Abholung überprüft.
-                        Ich habe eine Rechnung erhalten.
+                        Hiermit bestätige ich, dass ich die oben genannten Bedingungen gelesen habe, mit ihnen
+                        einverstanden bin und diese
+                        akzeptiere.
                     </div>
                 </td>
                 <td style="width: 15%">
-                    <div>Datum/Ort:</div>
+                    <div>Datum/Ort:<span>{{timestamp}}</span></div>
                 </td>
                 <td style="width: 30%; padding: 0.4em">
                     Kunde: (Unterschrift)
@@ -585,5 +512,97 @@
                 </td>
             </tr>
         </table>
-    </body>
+    </div>
+
+    <!-- Repairs Section -->
+    <div style="break-before: page">
+        <table style="width: 100%; border-collapse: collapse; table-layout: fixed">
+            <tr>
+                <!-- Column 1: Device Items After Repair -->
+                <td style="vertical-align: top; width: 35%">
+                    <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
+                        Checkliste:
+                    </p>
+                    <ul style="
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+
+                                -webkit-column-count: 2;
+                                -moz-column-count: 2;
+                                column-count: 2;
+
+                                -webkit-column-gap: 1em;
+                                -moz-column-gap: 1em;
+                                column-gap: 1em;
+                            ">
+                        {% for test in test_after_repair %}
+                        <li style="margin-bottom: 0.15em">
+                            <span class="checkbox"></span>
+                            <span style="font-size: 0.75em">{{ test }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+
+                <td style="vertical-align: top; width: 35%">
+                    <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
+                        Repariert sein:
+                    </p>
+                    <ul style="
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+
+                                -webkit-column-count: 2;
+                                -moz-column-count: 2;
+                                column-count: 2;
+
+                                -webkit-column-gap: 1em;
+                                -moz-column-gap: 1em;
+                                column-gap: 1em;
+                            ">
+                        {% for item in repairs_made %}
+                        <li style="margin-bottom: 0.2em; text-align: left">
+                            <span class="checkbox"></span>
+                            <span style="font-size: 0.75em">{{ item }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <!-- Column 3: Tests Before Repair -->
+                <td style="vertical-align: top">
+                    <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">Notizen:</p>
+                    <div class="input-container" style="height: 80px"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <table style="
+                border: 1px dashed #db1f2a;
+                width: 100%;
+                font-size: 12px;
+                border-spacing: 0;
+                margin-top: 0.5em;
+                padding: 0.5em;
+            ">
+        <tr>
+            <td style="width: 55%">
+                <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
+                    Abholung: Die Funktion des Gerätes wurde von mir bei der Abholung überprüft.
+                    Ich habe eine Rechnung erhalten.
+                </div>
+            </td>
+            <td style="width: 15%">
+                <div>Datum/Ort:</div>
+            </td>
+            <td style="width: 30%; padding: 0.4em">
+                Kunde: (Unterschrift)
+                <div class="signature-line"></div>
+            </td>
+        </tr>
+    </table>
+</body>
+
 </html>
