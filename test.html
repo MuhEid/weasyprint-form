@@ -311,26 +311,32 @@
                     </tr>
                     <!-- Sixth Row -->
                     <tr>
-                        <!-- Farbe -->
-                        <td style="width: 50%; padding-right: 1em">
-                            <div class="input-label">Farbe</div>
-                            <div class="input-container">{{ color }}</div>
+                        <!-- Left: Three input containers stacked -->
+                        <td style="width: 50%; vertical-align: top; padding-right: 1em;">
+                            <div style="display: flex; flex-direction: column; gap: 0.5em; height: 100%;">
+                                <div>
+                                    <div class="input-label">Farbe</div>
+                                    <div class="input-container">{{ color }}</div>
+                                </div>
+                                <div>
+                                    <div class="input-label">PIN der SIM Karte</div>
+                                    <div class="input-container">{{ simPin }}</div>
+                                </div>
+                                <div>
+                                    <div class="input-label">Geräte Entsperrcode</div>
+                                    <div class="input-container">{{ deviceUnlockCode }}</div>
+                                </div>
+                            </div>
                         </td>
-                        <!-- PIN der SIM Karte -->
-                        <td style="width: 50%">
-                            <div class="input-label">PIN der SIM Karte</div>
-                            <div class="input-container">{{ simPin }}</div>
+                        <!-- Right: Lock pattern -->
+                        <td style="width: 50%; vertical-align: top;">
+                            <div
+                                style="height: 100%; display: flex; flex-direction: column; justify-content: flex-start;">
+                                <p style="font-size: 12px; margin: 0 0 0.5em 0;">Sperr Muster</p>
+                                <img src="images/pattern-lock.png" alt="Device Mockup"
+                                    style="max-width: 130px; height: auto;" />
+                            </div>
                         </td>
-                    </tr>
-                    <!-- Seventh Row -->
-                    <tr>
-                        <!-- Geräte Entsperrcode -->
-                        <td style="width: 50%; padding-right: 1em">
-                            <div class="input-label">Geräte Entsperrcode</div>
-                            <div class="input-container">{{ deviceUnlockCode }}</div>
-                        </td>
-                        <!-- Empty cell to balance the table -->
-                        <td style="width: 50%"></td>
                     </tr>
                 </table>
             </td>
@@ -358,10 +364,6 @@
                     </li>
                     {% endfor %}
                 </ul>
-                <div style="width: 50%">
-                    <p style="font-size: 12px">Sperr Muster</p>
-                    <img src="images/pattern-lock.png" alt="Device Mockup" style="max-width: 80px" />
-                </div>
                 <div class="input-container" style="height: 60px; margin-top: 0.5em"></div>
             </td>
         </tr>
@@ -477,9 +479,9 @@
 
             <!-- Second Row -->
             {% if waterDamage %}
-            <tr style="margin: 0.5em 0">
+            <tr>
                 <!-- Checkbox and Text -->
-                <td style="text-align: left">
+                <td style=" text-align: left">
                     <span class="checkbox checked"></span>
                     <span class="checkbox-text">
                         Mir ist bewusst, dass ich bei Wasserschäden keine Garantie oder
