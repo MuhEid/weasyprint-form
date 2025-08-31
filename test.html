@@ -8,7 +8,7 @@
     <style>
         @page {
             size: 210mm 297mm;
-            margin: 0.8cm;
+            margin: 0.6cm;
         }
 
         @font-face {
@@ -28,30 +28,32 @@
 
         html {
             zoom: 1;
+            hyphens: auto;
         }
 
         body {
             font-family: "DejaVu Sans", sans-serif;
-            font-size: 12pt;
+            font-size: 11pt;
             margin: 0;
             padding: 0;
             line-height: normal;
             font-weight: 400;
+            hyphens: auto;
         }
 
         .input-label {
             font-weight: 400;
-            margin-bottom: 0.5em;
-            font-size: 12px;
+            margin-bottom: 0.4em;
+            font-size: 11px;
         }
 
         .input-container {
             background-color: #f9fafb;
             color: #111827;
-            font-size: 12px;
+            font-size: 11px;
             border-radius: 0.5em;
             border: 1px solid #d1d5db;
-            padding: 0.5em;
+            padding: 0.4em;
         }
 
         .main-title {
@@ -216,6 +218,36 @@
             color: #6b7280;
             margin-top: 0.25em;
         }
+
+        .pricing-table,
+        .pricing-table td,
+        .pricing-table div {
+            box-sizing: border-box;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            table-layout: fixed;
+            font-size: 0.75em;
+        }
+
+        .pricing-table td {
+            vertical-align: top;
+            padding: 0 0.3em;
+            /* simpler, no extra width growth */
+        }
+
+        .pricing-box {
+            background: #f9fafb;
+            color: #111827;
+            border-radius: 0.25em;
+            border: 1px solid #d1d5db;
+            padding: 0.25em;
+            text-align: right;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -225,15 +257,15 @@
         <tr>
             <!-- Logo Component -->
             <td style="width: 50%">
-                <img src="images/logo.png" alt="Logo" style="width: 200px" />
+                <img src="images/logo.png" alt="Logo" style="width: 180px" />
             </td>
             <!-- Title -->
             <td style="width: 50%; text-align: center; font-weight: 700">
-                <h1 style="font-size: 1em">Reparaturauftrag</h1>
-                <h2 style="font-size: 0.75em; color: #db1f2a">
-                    <span style="margin-right: 0.5em">Auftrag-Nr.:</span>{{ orderId }}
-                </h2>
-                <p>{{timestamp}}</p>
+                <h1 style="font-size:1em; margin:0;">Reparaturauftrag</h1>
+                <p style="font-size:0.75em; color:#db1f2a; margin:0.1em 0 0;">
+                    <strong>Auftrag-Nr.:</strong> {{ orderId }}
+                </p>
+                <p style="margin:0.1em 0 0;">{{ timestamp }}</p>
             </td>
         </tr>
     </table>
@@ -334,7 +366,7 @@
                                 style="height: 100%; display: flex; flex-direction: column; justify-content: flex-start;">
                                 <p style="font-size: 12px; margin: 0 0 0.5em 0;">Sperr Muster</p>
                                 <img src="images/pattern-lock.png" alt="Device Mockup"
-                                    style="max-width: 130px; height: auto;" />
+                                    style="max-width: 100px; height: auto;" />
                             </div>
                         </td>
                     </tr>
@@ -462,7 +494,7 @@
             <tr>
                 <!-- Question and Answer -->
                 <td style="width: 60%">
-                    <p class="question">Hat das Gerät einen Wasserschaden?</p>
+                    <p class="question" style="margin: 0 0 1em 0; ">Hat das Gerät einen Wasserschaden?</p>
                     <div>
                         {% if waterDamage %}
                         <p class="answer">Ja, es hat einen Wasserschaden</p>
@@ -502,64 +534,26 @@
 
     <!-- Pricing Section -->
     <div style="margin: 1em 0; padding-top: 5px; width: 100%; border-top: 0.125em solid black">
-        <!-- First table: input-like boxes -->
-        <table style="
-          width: 100%;
-          border-collapse: collapse;
-          table-layout: fixed;
-          font-size: 0.75em;
-        ">
+        <!-- Fixed pricing table -->
+        <table class="pricing-table">
             <tr>
-                <!-- Column 1: Reparieren Sie mein Gerät bis -->
-                <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
+                <td style="width: 33%;">
                     <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                         Reparieren Sie mein Gerät bis:
                     </div>
-                    <div style="
-                position: relative;
-                background-color: #f9fafb;
-                color: #111827;
-                border-radius: 0.3em;
-                border: 1px solid #d1d5db;
-                padding: 0.3em;
-                text-align: right;
-              ">
-                        {{ repairMaxPrice }} €
-                    </div>
+                    <div class="pricing-box">{{ repairMaxPrice }} €</div>
                 </td>
-                <!-- Column 2: Deposit -->
-                <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
+                <td style="width: 33%;">
                     <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                         Anzahlung/Deposit:
                     </div>
-                    <div style="
-                position: relative;
-                background-color: #f9fafb;
-                color: #111827;
-                border-radius: 0.3em;
-                border: 1px solid #d1d5db;
-                padding: 0.3em;
-                text-align: right;
-              ">
-                        {{ deposit }} €
-                    </div>
+                    <div class="pricing-box">{{ deposit }} €</div>
                 </td>
-                <!-- Column 3: Gesamtpreis -->
-                <td style="vertical-align: top; width: 34%">
+                <td style="width: 34%;">
                     <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                         Gesamtpreis:
                     </div>
-                    <div style="
-                position: relative;
-                background-color: #f9fafb;
-                color: #111827;
-                border-radius: 0.3em;
-                border: 1px solid #d1d5db;
-                padding: 0.3em;
-                text-align: right;
-              ">
-                        {{ totalPrice }} €
-                    </div>
+                    <div class="pricing-box">{{ totalPrice }} €</div>
                 </td>
             </tr>
         </table>
