@@ -131,13 +131,9 @@
             border-spacing: 0;
         }
 
-        .signature-field {
-            text-align: left;
-        }
-
         .signature-line {
             border-bottom: 1px solid #000;
-            width: 70%;
+            width: 100%;
             height: 20px;
             margin-top: 0.2em;
         }
@@ -149,6 +145,76 @@
 
         .answer {
             font-size: 0.75em;
+        }
+
+        .accessories {
+            width: 50%;
+        }
+
+        .accessories h3 {
+            font-size: 0.85em;
+            margin: 0 0 0.25em 0;
+            font-weight: 700;
+        }
+
+        .accessories table {
+            width: 100%;
+            font-size: 0.75em;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .accessories th,
+        .accessories td {
+            padding: 0.35em 0.5em;
+            vertical-align: middle;
+        }
+
+        .accessories thead th {
+            font-weight: 600;
+            text-align: left;
+            border-bottom: 1px solid #111;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .accessories tbody tr {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .accessories tbody tr:nth-child(odd) {
+            background: #f9fafb;
+        }
+
+        .accessories .col-name {
+            width: auto;
+        }
+
+        .accessories .col-price {
+            width: 5.2em;
+            text-align: right;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Keep rows intact on PDF page breaks */
+        .accessories table,
+        .accessories tr,
+        .accessories td,
+        .accessories th {
+            break-inside: avoid;
+        }
+
+        .accessories tfoot td {
+            border-top: 2px solid #111;
+            font-weight: 700;
+            background: #fff;
+        }
+
+        .accessories .muted {
+            font-size: 0.75em;
+            color: #6b7280;
+            margin-top: 0.25em;
         }
     </style>
 </head>
@@ -164,10 +230,10 @@
             <!-- Title -->
             <td style="width: 50%; text-align: center; font-weight: 700">
                 <h1 style="font-size: 1em">Reparaturauftrag</h1>
-                <h2 style="font-size: 0.5em; color: #db1f2a">
+                <h2 style="font-size: 0.75em; color: #db1f2a">
                     <span style="margin-right: 0.5em">Auftrag-Nr.:</span>{{ orderId }}
-                    <span>{{timestamp}}</span>
                 </h2>
+                <p>{{timestamp}}</p>
             </td>
         </tr>
     </table>
@@ -266,12 +332,6 @@
                         <!-- Empty cell to balance the table -->
                         <td style="width: 50%"></td>
                     </tr>
-                    <tr>
-                        <div style="width: 50%">
-                            <p style="font-size: 12px">Sperr Muster</p>
-                            <img src="images/pattern-lock.png" alt="Device Mockup" style="max-width: 80px" />
-                        </div>
-                    </tr>
                 </table>
             </td>
             <!-- Second Main Column -->
@@ -298,7 +358,11 @@
                     </li>
                     {% endfor %}
                 </ul>
-                <div class="input-container" style="height: 80px"></div>
+                <div style="width: 50%">
+                    <p style="font-size: 12px">Sperr Muster</p>
+                    <img src="images/pattern-lock.png" alt="Device Mockup" style="max-width: 80px" />
+                </div>
+                <div class="input-container" style="height: 60px; margin-top: 0.5em"></div>
             </td>
         </tr>
     </table>
@@ -359,38 +423,35 @@
     <!-- Third Section -->
     <div>
         <!-- Accessories Section -->
-        <div style="width: 50%">
-            <p style="font-size: 0.7em; font-weight: 700; margin: 0">Zubehör:</p>
-            <table style="width: 100%; font-size: 0.75em">
+        <div class="accessories">
+            <h3>Zubehör:</h3>
+
+            {% if accessories and accessories|length > 0 %}
+            <table>
                 <thead>
-                    <tr style="font-weight: 400">
-                        <th style="text-align: left; padding-bottom: 0.5em">&nbsp;</th>
-                        <th style="text-align: left; padding-bottom: 0.5em; font-weight: 400">
-                            Artikel
-                        </th>
-                        <th style="text-align: right; padding-bottom: 0.5em; font-weight: 400">
-                            Preis (€)
-                        </th>
+                    <tr>
+                        <th class="col-name">Artikel</th>
+                        <th class="col-price">Preis (€)</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for accessory in accessories %}
-                    <tr style="border-bottom: 1px solid black">
-                        <td style="width: 10%; vertical-align: middle">
-                            <span class="checkbox checked"></span>
-                        </td>
-                        <td style="vertical-align: middle">{{ accessory.name }}</td>
-                        <td style="vertical-align: middle; text-align: right">
-                            {{ accessory.price }}
-                        </td>
+                    <tr>
+                        <td class="col-name">{{ accessory.name }}</td>
+                        <td class="col-price">{{ '%0.2f'|format(accessory.price) }} €</td>
                     </tr>
                     {% endfor %}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="col-name" style="text-align: right;">Gesamt</td>
+                        <td class="col-price">{{ '%0.2f'|format(totalAccessoryPrice) }} €</td>
+                    </tr>
+                </tfoot>
             </table>
-            <!-- Total Price Display -->
-            <div style="margin-top: 0.5em; font-size: 0.75em; text-align: right">
-                <strong>Gesamtpreis für Zubehör: {{ totalAccessoryPrice }} €</strong>
-            </div>
+            {% else %}
+            <div class="muted">Kein Zubehör angegeben.</div>
+            {% endif %}
         </div>
 
         <!-- Water Damage Section -->
@@ -426,9 +487,9 @@
                     </span>
                 </td>
                 <!-- Signature Field -->
-                <td style="width: 25%; text-align: left">
+                <td style="width: 20%; text-align: center">
                     <p style="margin: 0 0 0.2em 0">
-                        Unterschrift Kunde: <span>{{timestamp}}</span>
+                        Kunde: (Unterschrift)
                     </p>
                     <div class="signature-line"></div>
                 </td>
@@ -439,13 +500,13 @@
 
     <!-- Pricing Section -->
     <div style="margin: 1em 0; padding-top: 5px; width: 100%; border-top: 0.125em solid black">
-        <!-- Create a table to arrange the fields horizontally -->
+        <!-- First table: input-like boxes -->
         <table style="
-                    width: 100%;
-                    border-collapse: collapse;
-                    table-layout: fixed;
-                    font-size: 0.75em;
-                ">
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+          font-size: 0.75em;
+        ">
             <tr>
                 <!-- Column 1: Reparieren Sie mein Gerät bis -->
                 <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
@@ -453,31 +514,31 @@
                         Reparieren Sie mein Gerät bis:
                     </div>
                     <div style="
-                                position: relative;
-                                background-color: #f9fafb;
-                                color: #111827;
-                                border-radius: 0.3em;
-                                border: 1px solid #d1d5db;
-                                padding: 0.3em;
-                                text-align: right;
-                            ">
+                position: relative;
+                background-color: #f9fafb;
+                color: #111827;
+                border-radius: 0.3em;
+                border: 1px solid #d1d5db;
+                padding: 0.3em;
+                text-align: right;
+              ">
                         {{ repairMaxPrice }} €
                     </div>
                 </td>
-                <!-- Column 2: Anzahlung/Deposit -->
+                <!-- Column 2: Deposit -->
                 <td style="vertical-align: top; width: 33%; padding-right: 0.5em">
                     <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                         Anzahlung/Deposit:
                     </div>
                     <div style="
-                                position: relative;
-                                background-color: #f9fafb;
-                                color: #111827;
-                                border-radius: 0.3em;
-                                border: 1px solid #d1d5db;
-                                padding: 0.3em;
-                                text-align: right;
-                            ">
+                position: relative;
+                background-color: #f9fafb;
+                color: #111827;
+                border-radius: 0.3em;
+                border: 1px solid #d1d5db;
+                padding: 0.3em;
+                text-align: right;
+              ">
                         {{ deposit }} €
                     </div>
                 </td>
@@ -487,39 +548,39 @@
                         Gesamtpreis:
                     </div>
                     <div style="
-                                position: relative;
-                                background-color: #f9fafb;
-                                color: #111827;
-                                border-radius: 0.3em;
-                                border: 1px solid #d1d5db;
-                                padding: 0.3em;
-                                text-align: right;
-                            ">
+                position: relative;
+                background-color: #f9fafb;
+                color: #111827;
+                border-radius: 0.3em;
+                border: 1px solid #d1d5db;
+                padding: 0.3em;
+                text-align: right;
+              ">
                         {{ totalPrice }} €
                     </div>
                 </td>
             </tr>
         </table>
+
+        <!-- Second table: confirmation line -->
         <table style="
-                                    border: 1px dashed #db1f2a;
-                                    width: 100%;
-                                    font-size: 12px;
-                                    border-spacing: 0;
-                                    margin-top: 0.5em;
-                                    padding: 0.5em;
-                                ">
+          border: 1px dashed #db1f2a;
+          width: 100%;
+          font-size: 12px;
+          border-spacing: 0; /* keep */
+          margin-top: 0.5em;
+        ">
             <tr>
-                <td style="width: 55%">
+                <td style="width: 55%; padding: 0.5em;">
                     <div style="margin-bottom: 0.3em; font-weight: 400; color: #111827">
                         Hiermit bestätige ich, dass ich die oben genannten Bedingungen gelesen habe, mit ihnen
-                        einverstanden bin und diese
-                        akzeptiere.
+                        einverstanden bin und diese akzeptiere.
                     </div>
                 </td>
-                <td style="width: 15%">
+                <td style="width: 15%; padding: 0.5em; vertical-align: top;">
                     <div>Datum/Ort:<span>{{timestamp}}</span></div>
                 </td>
-                <td style="width: 30%; padding: 0.4em">
+                <td style="width: 30%; padding: 0.5em; text-align: center">
                     Kunde: (Unterschrift)
                     <div class="signature-line"></div>
                 </td>
@@ -527,7 +588,7 @@
         </table>
     </div>
 
-    <!-- Repairs Section -->
+    <!-- Start of Second Page -->
     <div style="break-before: page">
         <table style="width: 100%; border-collapse: collapse; table-layout: fixed">
             <tr>
@@ -592,13 +653,13 @@
         </table>
     </div>
 
+    <!-- Signing Section -->
     <table style="
                 border: 1px dashed #db1f2a;
                 width: 100%;
                 font-size: 12px;
                 border-spacing: 0;
                 margin-top: 0.5em;
-                padding: 0.5em;
             ">
         <tr>
             <td style="width: 55%">
