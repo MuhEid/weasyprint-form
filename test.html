@@ -98,7 +98,7 @@
             height: 6pt;
             border: 0.5pt solid #1f4696;
             border-radius: 50%;
-            margin-right: 0.5rem;
+            margin-right: 0.2rem;
             position: relative;
             vertical-align: middle;
         }
@@ -176,7 +176,7 @@
     <table style="width: 100%; margin-bottom: 0.5em">
         <tr>
             <!-- First Main Column -->
-            <td style="vertical-align: top; width: 67%">
+            <td style="vertical-align: top; width: 62%">
                 <table style="width: 100%">
                     <!-- First Row -->
                     <tr>
@@ -266,14 +266,31 @@
                         <!-- Empty cell to balance the table -->
                         <td style="width: 50%"></td>
                     </tr>
+                    <tr>
+                        <div style="width: 50%">
+                            <p style="font-size: 12px">Sperr Muster</p>
+                            <img src="images/pattern-lock.png" alt="Device Mockup" style="max-width: 80px" />
+                        </div>
+                    </tr>
                 </table>
             </td>
             <!-- Second Main Column -->
-            <td style="vertical-align: top; width: 33%; padding-left: 1em">
+            <td style="vertical-align: top; width: 38%; padding-left: 1em">
                 <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
                     Repariert wird:
                 </p>
-                <ul style="list-style: none; padding: 0; margin: 0">
+                <ul style=" 
+                            list-style: none;
+                            margin: 0;
+                            padding: 0;
+
+                            -webkit-column-count: 2;
+                            -moz-column-count: 2;
+                            column-count: 2;
+
+                            -webkit-column-gap: 1em;
+                            -moz-column-gap: 1em;
+                            column-gap: 1em;">
                     {% for repair in repairs.repairsWillBeMade %}
                     <li style="margin-bottom: 0.15em">
                         <span class="checkbox checked"></span>
@@ -281,10 +298,6 @@
                     </li>
                     {% endfor %}
                 </ul>
-                <div style="width: 50%">
-                    <p style="font-size: 12px">sperr muster</p>
-                    <img src="images/pattern-lock.png" alt="Device Mockup" style="max-width: 80px" />
-                </div>
                 <div class="input-container" style="height: 80px"></div>
             </td>
         </tr>
@@ -294,11 +307,11 @@
     <div style="margin-top: 0.5em">
         <table style="width: 100%; border-collapse: collapse; table-layout: fixed">
             <tr>
+                <p style="font-size: 0.7em; font-weight: 700;">
+                    Mängel am Gerät vor der Reparatur:
+                </p>
                 <!-- Column 2: Device Items Before Repair (with Image) -->
                 <td style="vertical-align: top; width: 33%">
-                    <p style="font-size: 0.7em; font-weight: 700; margin: 0.2em 0">
-                        Mängel am Gerät vor der Reparatur:
-                    </p>
                     <ul style="list-style: none; padding: 0; margin: 0">
                         {% for item in repairs.deviceItemsBeforeRepair %}
                         <li style="margin-bottom: 0.2em; text-align: left">
